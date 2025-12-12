@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+   moduleFormat    = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id         String      @id @default(uuid())
+  email      String      @unique
+  password   String
+  portfolios Portfolio[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
+
+model Portfolio {
+  id          String        @id @default(uuid())
+  name        String
+  description String?
+  user        User          @relation(fields: [userId], references: [id])
+  userId      String
+
+  profile     Profile?
+  projects    Project[]
+  skills      Skill[]
+  experience  Experience[]
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model Profile {
+  id           String     @id @default(uuid())
+  portfolio    Portfolio @relation(fields: [portfolioId], references: [id])
+  portfolioId  String     @unique
+
+  fullName     String
+  title        String
+  bio          String
+  location     String?
+  email        String
+  phone        String?
+  githubUrl    String?
+  linkedinUrl  String?
+  websiteUrl   String?
+  cvUrl        String?
+
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model Project {
+  id                 String     @id @default(uuid())
+  portfolio           Portfolio @relation(fields: [portfolioId], references: [id])
+  portfolioId         String
+
+  title               String
+  shortDescription    String
+  longDescription     String?
+  coverImageUrl       String?
+  githubUrl           String?
+  liveUrl             String?
+  isFeatured          Boolean    @default(false)
+
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+}
+
+model Skill {
+  id          String     @id @default(uuid())
+  portfolio   Portfolio @relation(fields: [portfolioId], references: [id])
+  portfolioId String
+
+  name        String
+
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Experience {
+  id           String     @id @default(uuid())
+  portfolio    Portfolio @relation(fields: [portfolioId], references: [id])
+  portfolioId  String
+
+  companyName  String
+  position     String
+  description  String?
+  startDate    DateTime
+  endDate      DateTime?
+
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
