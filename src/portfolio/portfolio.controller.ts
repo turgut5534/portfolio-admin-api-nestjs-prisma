@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards, Req, Param, Patch, ForbiddenException } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards, Req, Param, Patch, ForbiddenException, Delete } from '@nestjs/common';
 import { PortfolioService } from './portfolio.service';
 import { JwtAuthGuard } from 'src/middlewares/jwt-guard';
 import { CreateProfileDto } from './dto/create-profile.dto';
@@ -123,5 +123,38 @@ export class PortfolioController {
         if (project.userId !== userId) throw new ForbiddenException('You cannot update this project');
 
         return this.portfolioService.updateProject(id, dto);
+    }
+
+    //DELETIONS
+    @Delete('profiles/:id')
+    async deleteProfile(@Param('id') id: string, @Req() req) {
+        const userId= req.user.sub
+        return this.portfolioService.deleteProfile(id, userId)
+    }
+
+    @Delete('skills/:id')
+    async deleteSkill(@Param('id') id: string, @Req() req) {
+        const userId= req.user.sub
+        return this.portfolioService.deleteSkill(id, userId)
+    }
+
+
+    @Delete('experiences/:id')
+    async deleteExperience(@Param('id') id: string, @Req() req) {
+        const userId= req.user.sub
+        return this.portfolioService.deleteExperience(id, userId)
+    }
+
+
+    @Delete('educations/:id')
+    async deleteEducation(@Param('id') id: string, @Req() req) {
+        const userId= req.user.sub
+        return this.portfolioService.deleteEducation(id, userId)
+    }
+
+    @Delete('projects/:id')
+    async deleteProject(@Param('id') id: string, @Req() req) {
+        const userId= req.user.sub
+        return this.portfolioService.deleteProject(id, userId)
     }
 }

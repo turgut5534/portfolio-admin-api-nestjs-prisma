@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, ForbiddenException} from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { Education, Experience, Profile, Project, Skill } from 'src/generated/prisma/client';
@@ -167,5 +167,71 @@ export class PortfolioService {
         });
     }
     
+
+    //DELETIONS
+
+    async deleteProfile(id: string, userId: string) {
+
+        const profile = await this.prisma.profile.findUnique({where: {
+            id
+        }})
+
+        if(!profile || profile.userId !== userId) {
+            throw new ForbiddenException('You cannot delete this project');
+        }
+
+        return this.prisma.profile.delete({where: {id}})
+    }
    
+    async deleteSkill(id: string, userId: string) {
+
+        const skill = await this.prisma.skill.findUnique({where: {
+            id
+        }})
+
+        if(!skill || skill.userId !== userId) {
+            throw new ForbiddenException('You cannot delete this project');
+        }
+
+        return this.prisma.skill.delete({where: {id}})
+    }
+
+    async deleteExperience(id: string, userId: string) {
+
+        const experience = await this.prisma.experience.findUnique({where: {
+            id
+        }})
+
+        if(!experience || experience.userId !== userId) {
+            throw new ForbiddenException('You cannot delete this project');
+        }
+
+        return this.prisma.experience.delete({where: {id}})
+    }
+
+    async deleteEducation(id: string, userId: string) {
+
+        const education = await this.prisma.education.findUnique({where: {
+            id
+        }})
+
+        if(!education || education.userId !== userId) {
+            throw new ForbiddenException('You cannot delete this project');
+        }
+
+        return this.prisma.education.delete({where: {id}})
+    }
+
+    async deleteProject(id: string, userId: string) {
+
+        const project = await this.prisma.project.findUnique({where: {
+            id
+        }})
+
+        if(!project || project.userId !== userId) {
+            throw new ForbiddenException('You cannot delete this project');
+        }
+
+        return this.prisma.project.delete({where: {id}})
+    }
 }
