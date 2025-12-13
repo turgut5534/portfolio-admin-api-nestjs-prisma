@@ -9,38 +9,38 @@ export class AdminService {
 
     constructor(private readonly prisma: PrismaService) {}
 
-async saveAdmin(data: CreateAdminDto): Promise<User> {
+    async saveAdmin(data: CreateAdminDto): Promise<User> {
 
-    const hashedPassword = await bcrypt.hash(data.password, 12);
+        const hashedPassword = await bcrypt.hash(data.password, 12);
 
-    try {
+        try {
 
-      return await this.prisma.user.create({
-        data: {
-          email: data.email,
-          password: hashedPassword,
-        },
-      });
-    } catch (error) {
+          return await this.prisma.user.create({
+            data: {
+              email: data.email,
+              password: hashedPassword,
+            },
+          });
+        } catch (error) {
 
-      if (error.code === 'P2002') {
-        throw new BadRequestException('Email already exists');
+          if (error.code === 'P2002') {
+            throw new BadRequestException('Email already exists');
+          }
+          throw error;
+        }
       }
-      throw error;
-    }
-  }
 
-  async findById(userId: string) {
-    return this.prisma.user.findUnique({
-      where: { id: userId },
-      include: {
-        profile: true,
-        skills: true,
-        educations: true,
-        experiences: true,
-        projects: true
-      },
-    });
-  }
+      async findById(userId: string) {
+        return this.prisma.user.findUnique({
+          where: { id: userId },
+          include: {
+            profile: true,
+            skills: true,
+            educations: true,
+            experiences: true,
+            projects: true
+          },
+        });
+      }
 
 }
