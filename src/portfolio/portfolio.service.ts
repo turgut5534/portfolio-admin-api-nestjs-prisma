@@ -6,12 +6,74 @@ import { CreateSkillDto } from './dto/create-skill.dto';
 import { CreateExperienceDto } from './dto/create-experience.dto';
 import { CreateEducationDto } from './dto/create-education.dto';
 import { CreateProjectDto } from './dto/create-project.dto';
+import { UpdateProfileDto } from './dto/update-profile.dto';
+import { UpdateSkillDto } from './dto/update-skill.dto';
+import { UpdateExperienceDto } from './dto/update-experience.dto';
+import { UpdateEducationDto } from './dto/update-education.dto';
+import { UpdateProjectDto } from './dto/update-project.dto';
 
 @Injectable()
 export class PortfolioService {
     
     constructor(private readonly prisma: PrismaService) {}
 
+    //FINDING 
+    async findProfileById(id: string): Promise<Profile>{
+
+        const profile = await this.prisma.profile.findUniqueOrThrow({
+            where: {
+                id
+            }
+        })
+
+        return profile
+    }
+
+    async findSkillById(id: string): Promise<Skill>{
+
+        const profile = await this.prisma.skill.findUniqueOrThrow({
+            where: {
+                id
+            }
+        })
+
+        return profile
+    }
+
+    async findExperienceById(id: string): Promise<Experience>{
+
+        const profile = await this.prisma.experience.findUniqueOrThrow({
+            where: {
+                id
+            }
+        })
+
+        return profile
+    }
+
+    async findEducationById(id: string): Promise<Education>{
+
+        const profile = await this.prisma.education.findUniqueOrThrow({
+            where: {
+                id
+            }
+        })
+
+        return profile
+    }
+
+    async findProjectById(id: string): Promise<Project>{
+
+        const profile = await this.prisma.project.findUniqueOrThrow({
+            where: {
+                id
+            }
+        })
+
+        return profile
+    }
+
+    // CREATING
     async saveProfile(data:CreateProfileDto, userId: string): Promise<Profile> {
      
         return this.prisma.profile.create({
@@ -67,4 +129,43 @@ export class PortfolioService {
         
     }
 
+    //UPDATING
+    async updateProfile(id: string, dto: UpdateProfileDto) {
+        return this.prisma.profile.update({
+            where: { id },
+            data: dto, 
+        });
+    }
+    
+    async updateSkill(id: string, dto: UpdateSkillDto) {
+        
+        return this.prisma.skill.update({
+            where: { id },
+            data: dto, 
+        });
+    }
+    
+
+    async updateExperience(id: string, dto: UpdateExperienceDto) {
+        return this.prisma.experience.update({
+            where: { id },
+            data: dto, 
+        });
+    }
+
+    async updateEducation(id: string, dto: UpdateEducationDto) {
+        return this.prisma.education.update({
+            where: { id },
+            data: dto, 
+        });
+    }
+    
+    async updateProject(id: string, dto: UpdateProjectDto) {
+        return this.prisma.project.update({
+            where: { id },
+            data: dto, 
+        });
+    }
+    
+   
 }
