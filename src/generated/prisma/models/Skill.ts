@@ -26,7 +26,7 @@ export type AggregateSkill = {
 
 export type SkillMinAggregateOutputType = {
   id: string | null
-  portfolioId: string | null
+  userId: string | null
   name: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -34,7 +34,7 @@ export type SkillMinAggregateOutputType = {
 
 export type SkillMaxAggregateOutputType = {
   id: string | null
-  portfolioId: string | null
+  userId: string | null
   name: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -42,7 +42,7 @@ export type SkillMaxAggregateOutputType = {
 
 export type SkillCountAggregateOutputType = {
   id: number
-  portfolioId: number
+  userId: number
   name: number
   createdAt: number
   updatedAt: number
@@ -52,7 +52,7 @@ export type SkillCountAggregateOutputType = {
 
 export type SkillMinAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   name?: true
   createdAt?: true
   updatedAt?: true
@@ -60,7 +60,7 @@ export type SkillMinAggregateInputType = {
 
 export type SkillMaxAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   name?: true
   createdAt?: true
   updatedAt?: true
@@ -68,7 +68,7 @@ export type SkillMaxAggregateInputType = {
 
 export type SkillCountAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   name?: true
   createdAt?: true
   updatedAt?: true
@@ -149,7 +149,7 @@ export type SkillGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 
 export type SkillGroupByOutputType = {
   id: string
-  portfolioId: string
+  userId: string
   name: string
   createdAt: Date
   updatedAt: Date
@@ -178,20 +178,20 @@ export type SkillWhereInput = {
   OR?: Prisma.SkillWhereInput[]
   NOT?: Prisma.SkillWhereInput | Prisma.SkillWhereInput[]
   id?: Prisma.StringFilter<"Skill"> | string
-  portfolioId?: Prisma.StringFilter<"Skill"> | string
+  userId?: Prisma.StringFilter<"Skill"> | string
   name?: Prisma.StringFilter<"Skill"> | string
   createdAt?: Prisma.DateTimeFilter<"Skill"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Skill"> | Date | string
-  portfolio?: Prisma.XOR<Prisma.PortfolioScalarRelationFilter, Prisma.PortfolioWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type SkillOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  portfolio?: Prisma.PortfolioOrderByWithRelationInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type SkillWhereUniqueInput = Prisma.AtLeast<{
@@ -199,16 +199,16 @@ export type SkillWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.SkillWhereInput | Prisma.SkillWhereInput[]
   OR?: Prisma.SkillWhereInput[]
   NOT?: Prisma.SkillWhereInput | Prisma.SkillWhereInput[]
-  portfolioId?: Prisma.StringFilter<"Skill"> | string
+  userId?: Prisma.StringFilter<"Skill"> | string
   name?: Prisma.StringFilter<"Skill"> | string
   createdAt?: Prisma.DateTimeFilter<"Skill"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Skill"> | Date | string
-  portfolio?: Prisma.XOR<Prisma.PortfolioScalarRelationFilter, Prisma.PortfolioWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
 export type SkillOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -222,7 +222,7 @@ export type SkillScalarWhereWithAggregatesInput = {
   OR?: Prisma.SkillScalarWhereWithAggregatesInput[]
   NOT?: Prisma.SkillScalarWhereWithAggregatesInput | Prisma.SkillScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Skill"> | string
-  portfolioId?: Prisma.StringWithAggregatesFilter<"Skill"> | string
+  userId?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   name?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Skill"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Skill"> | Date | string
@@ -233,12 +233,12 @@ export type SkillCreateInput = {
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  portfolio: Prisma.PortfolioCreateNestedOneWithoutSkillsInput
+  user: Prisma.UserCreateNestedOneWithoutSkillsInput
 }
 
 export type SkillUncheckedCreateInput = {
   id?: string
-  portfolioId: string
+  userId: string
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -249,12 +249,12 @@ export type SkillUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  portfolio?: Prisma.PortfolioUpdateOneRequiredWithoutSkillsNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutSkillsNestedInput
 }
 
 export type SkillUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  portfolioId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -262,7 +262,7 @@ export type SkillUncheckedUpdateInput = {
 
 export type SkillCreateManyInput = {
   id?: string
-  portfolioId: string
+  userId: string
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -277,7 +277,7 @@ export type SkillUpdateManyMutationInput = {
 
 export type SkillUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  portfolioId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -295,7 +295,7 @@ export type SkillOrderByRelationAggregateInput = {
 
 export type SkillCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -303,7 +303,7 @@ export type SkillCountOrderByAggregateInput = {
 
 export type SkillMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -311,92 +311,92 @@ export type SkillMaxOrderByAggregateInput = {
 
 export type SkillMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
-export type SkillCreateNestedManyWithoutPortfolioInput = {
-  create?: Prisma.XOR<Prisma.SkillCreateWithoutPortfolioInput, Prisma.SkillUncheckedCreateWithoutPortfolioInput> | Prisma.SkillCreateWithoutPortfolioInput[] | Prisma.SkillUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.SkillCreateOrConnectWithoutPortfolioInput | Prisma.SkillCreateOrConnectWithoutPortfolioInput[]
-  createMany?: Prisma.SkillCreateManyPortfolioInputEnvelope
+export type SkillCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.SkillCreateWithoutUserInput, Prisma.SkillUncheckedCreateWithoutUserInput> | Prisma.SkillCreateWithoutUserInput[] | Prisma.SkillUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SkillCreateOrConnectWithoutUserInput | Prisma.SkillCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.SkillCreateManyUserInputEnvelope
   connect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[]
 }
 
-export type SkillUncheckedCreateNestedManyWithoutPortfolioInput = {
-  create?: Prisma.XOR<Prisma.SkillCreateWithoutPortfolioInput, Prisma.SkillUncheckedCreateWithoutPortfolioInput> | Prisma.SkillCreateWithoutPortfolioInput[] | Prisma.SkillUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.SkillCreateOrConnectWithoutPortfolioInput | Prisma.SkillCreateOrConnectWithoutPortfolioInput[]
-  createMany?: Prisma.SkillCreateManyPortfolioInputEnvelope
+export type SkillUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.SkillCreateWithoutUserInput, Prisma.SkillUncheckedCreateWithoutUserInput> | Prisma.SkillCreateWithoutUserInput[] | Prisma.SkillUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SkillCreateOrConnectWithoutUserInput | Prisma.SkillCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.SkillCreateManyUserInputEnvelope
   connect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[]
 }
 
-export type SkillUpdateManyWithoutPortfolioNestedInput = {
-  create?: Prisma.XOR<Prisma.SkillCreateWithoutPortfolioInput, Prisma.SkillUncheckedCreateWithoutPortfolioInput> | Prisma.SkillCreateWithoutPortfolioInput[] | Prisma.SkillUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.SkillCreateOrConnectWithoutPortfolioInput | Prisma.SkillCreateOrConnectWithoutPortfolioInput[]
-  upsert?: Prisma.SkillUpsertWithWhereUniqueWithoutPortfolioInput | Prisma.SkillUpsertWithWhereUniqueWithoutPortfolioInput[]
-  createMany?: Prisma.SkillCreateManyPortfolioInputEnvelope
+export type SkillUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.SkillCreateWithoutUserInput, Prisma.SkillUncheckedCreateWithoutUserInput> | Prisma.SkillCreateWithoutUserInput[] | Prisma.SkillUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SkillCreateOrConnectWithoutUserInput | Prisma.SkillCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.SkillUpsertWithWhereUniqueWithoutUserInput | Prisma.SkillUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.SkillCreateManyUserInputEnvelope
   set?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[]
   disconnect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[]
   delete?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[]
   connect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[]
-  update?: Prisma.SkillUpdateWithWhereUniqueWithoutPortfolioInput | Prisma.SkillUpdateWithWhereUniqueWithoutPortfolioInput[]
-  updateMany?: Prisma.SkillUpdateManyWithWhereWithoutPortfolioInput | Prisma.SkillUpdateManyWithWhereWithoutPortfolioInput[]
+  update?: Prisma.SkillUpdateWithWhereUniqueWithoutUserInput | Prisma.SkillUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.SkillUpdateManyWithWhereWithoutUserInput | Prisma.SkillUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.SkillScalarWhereInput | Prisma.SkillScalarWhereInput[]
 }
 
-export type SkillUncheckedUpdateManyWithoutPortfolioNestedInput = {
-  create?: Prisma.XOR<Prisma.SkillCreateWithoutPortfolioInput, Prisma.SkillUncheckedCreateWithoutPortfolioInput> | Prisma.SkillCreateWithoutPortfolioInput[] | Prisma.SkillUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.SkillCreateOrConnectWithoutPortfolioInput | Prisma.SkillCreateOrConnectWithoutPortfolioInput[]
-  upsert?: Prisma.SkillUpsertWithWhereUniqueWithoutPortfolioInput | Prisma.SkillUpsertWithWhereUniqueWithoutPortfolioInput[]
-  createMany?: Prisma.SkillCreateManyPortfolioInputEnvelope
+export type SkillUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.SkillCreateWithoutUserInput, Prisma.SkillUncheckedCreateWithoutUserInput> | Prisma.SkillCreateWithoutUserInput[] | Prisma.SkillUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SkillCreateOrConnectWithoutUserInput | Prisma.SkillCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.SkillUpsertWithWhereUniqueWithoutUserInput | Prisma.SkillUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.SkillCreateManyUserInputEnvelope
   set?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[]
   disconnect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[]
   delete?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[]
   connect?: Prisma.SkillWhereUniqueInput | Prisma.SkillWhereUniqueInput[]
-  update?: Prisma.SkillUpdateWithWhereUniqueWithoutPortfolioInput | Prisma.SkillUpdateWithWhereUniqueWithoutPortfolioInput[]
-  updateMany?: Prisma.SkillUpdateManyWithWhereWithoutPortfolioInput | Prisma.SkillUpdateManyWithWhereWithoutPortfolioInput[]
+  update?: Prisma.SkillUpdateWithWhereUniqueWithoutUserInput | Prisma.SkillUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.SkillUpdateManyWithWhereWithoutUserInput | Prisma.SkillUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.SkillScalarWhereInput | Prisma.SkillScalarWhereInput[]
 }
 
-export type SkillCreateWithoutPortfolioInput = {
+export type SkillCreateWithoutUserInput = {
   id?: string
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type SkillUncheckedCreateWithoutPortfolioInput = {
+export type SkillUncheckedCreateWithoutUserInput = {
   id?: string
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type SkillCreateOrConnectWithoutPortfolioInput = {
+export type SkillCreateOrConnectWithoutUserInput = {
   where: Prisma.SkillWhereUniqueInput
-  create: Prisma.XOR<Prisma.SkillCreateWithoutPortfolioInput, Prisma.SkillUncheckedCreateWithoutPortfolioInput>
+  create: Prisma.XOR<Prisma.SkillCreateWithoutUserInput, Prisma.SkillUncheckedCreateWithoutUserInput>
 }
 
-export type SkillCreateManyPortfolioInputEnvelope = {
-  data: Prisma.SkillCreateManyPortfolioInput | Prisma.SkillCreateManyPortfolioInput[]
+export type SkillCreateManyUserInputEnvelope = {
+  data: Prisma.SkillCreateManyUserInput | Prisma.SkillCreateManyUserInput[]
   skipDuplicates?: boolean
 }
 
-export type SkillUpsertWithWhereUniqueWithoutPortfolioInput = {
+export type SkillUpsertWithWhereUniqueWithoutUserInput = {
   where: Prisma.SkillWhereUniqueInput
-  update: Prisma.XOR<Prisma.SkillUpdateWithoutPortfolioInput, Prisma.SkillUncheckedUpdateWithoutPortfolioInput>
-  create: Prisma.XOR<Prisma.SkillCreateWithoutPortfolioInput, Prisma.SkillUncheckedCreateWithoutPortfolioInput>
+  update: Prisma.XOR<Prisma.SkillUpdateWithoutUserInput, Prisma.SkillUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.SkillCreateWithoutUserInput, Prisma.SkillUncheckedCreateWithoutUserInput>
 }
 
-export type SkillUpdateWithWhereUniqueWithoutPortfolioInput = {
+export type SkillUpdateWithWhereUniqueWithoutUserInput = {
   where: Prisma.SkillWhereUniqueInput
-  data: Prisma.XOR<Prisma.SkillUpdateWithoutPortfolioInput, Prisma.SkillUncheckedUpdateWithoutPortfolioInput>
+  data: Prisma.XOR<Prisma.SkillUpdateWithoutUserInput, Prisma.SkillUncheckedUpdateWithoutUserInput>
 }
 
-export type SkillUpdateManyWithWhereWithoutPortfolioInput = {
+export type SkillUpdateManyWithWhereWithoutUserInput = {
   where: Prisma.SkillScalarWhereInput
-  data: Prisma.XOR<Prisma.SkillUpdateManyMutationInput, Prisma.SkillUncheckedUpdateManyWithoutPortfolioInput>
+  data: Prisma.XOR<Prisma.SkillUpdateManyMutationInput, Prisma.SkillUncheckedUpdateManyWithoutUserInput>
 }
 
 export type SkillScalarWhereInput = {
@@ -404,34 +404,34 @@ export type SkillScalarWhereInput = {
   OR?: Prisma.SkillScalarWhereInput[]
   NOT?: Prisma.SkillScalarWhereInput | Prisma.SkillScalarWhereInput[]
   id?: Prisma.StringFilter<"Skill"> | string
-  portfolioId?: Prisma.StringFilter<"Skill"> | string
+  userId?: Prisma.StringFilter<"Skill"> | string
   name?: Prisma.StringFilter<"Skill"> | string
   createdAt?: Prisma.DateTimeFilter<"Skill"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Skill"> | Date | string
 }
 
-export type SkillCreateManyPortfolioInput = {
+export type SkillCreateManyUserInput = {
   id?: string
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type SkillUpdateWithoutPortfolioInput = {
+export type SkillUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type SkillUncheckedUpdateWithoutPortfolioInput = {
+export type SkillUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type SkillUncheckedUpdateManyWithoutPortfolioInput = {
+export type SkillUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -442,58 +442,58 @@ export type SkillUncheckedUpdateManyWithoutPortfolioInput = {
 
 export type SkillSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   name?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["skill"]>
 
 export type SkillSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   name?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["skill"]>
 
 export type SkillSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   name?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["skill"]>
 
 export type SkillSelectScalar = {
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   name?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type SkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "portfolioId" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["skill"]>
+export type SkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["skill"]>
 export type SkillInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type SkillIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type SkillIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $SkillPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Skill"
   objects: {
-    portfolio: Prisma.$PortfolioPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    portfolioId: string
+    userId: string
     name: string
     createdAt: Date
     updatedAt: Date
@@ -891,7 +891,7 @@ readonly fields: SkillFieldRefs;
  */
 export interface Prisma__SkillClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  portfolio<T extends Prisma.PortfolioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PortfolioDefaultArgs<ExtArgs>>): Prisma.Prisma__PortfolioClient<runtime.Types.Result.GetResult<Prisma.$PortfolioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -922,7 +922,7 @@ export interface Prisma__SkillClient<T, Null = never, ExtArgs extends runtime.Ty
  */
 export interface SkillFieldRefs {
   readonly id: Prisma.FieldRef<"Skill", 'String'>
-  readonly portfolioId: Prisma.FieldRef<"Skill", 'String'>
+  readonly userId: Prisma.FieldRef<"Skill", 'String'>
   readonly name: Prisma.FieldRef<"Skill", 'String'>
   readonly createdAt: Prisma.FieldRef<"Skill", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Skill", 'DateTime'>

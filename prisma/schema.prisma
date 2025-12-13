@@ -18,37 +18,24 @@ model User {
   id         String      @id @default(uuid())
   email      String      @unique
   password   String
-  portfolios Portfolio[]
+  profile    Profile?
+  experiences Experience[]
+  educations Education[]
+  projects Project[]
+  skills Skill[]
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
 }
 
-model Portfolio {
-  id          String        @id @default(uuid())
-  name        String
-  description String?
-  user        User          @relation(fields: [userId], references: [id])
-  userId      String
-
-  profile     Profile?
-  projects    Project[]
-  skills      Skill[]
-  experience  Experience[]
-
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-}
-
 model Profile {
   id           String     @id @default(uuid())
-  portfolio    Portfolio @relation(fields: [portfolioId], references: [id])
-  portfolioId  String     @unique
-
+  userId             String @unique
+  user        User          @relation(fields: [userId], references: [id])
   fullName     String
   title        String
   bio          String
   location     String?
-  email        String
+  email        String?
   phone        String?
   githubUrl    String?
   linkedinUrl  String?
@@ -61,9 +48,8 @@ model Profile {
 
 model Project {
   id                 String     @id @default(uuid())
-  portfolio           Portfolio @relation(fields: [portfolioId], references: [id])
-  portfolioId         String
-
+  userId             String
+  user        User          @relation(fields: [userId], references: [id])
   title               String
   shortDescription    String
   longDescription     String?
@@ -71,33 +57,40 @@ model Project {
   githubUrl           String?
   liveUrl             String?
   isFeatured          Boolean    @default(false)
-
   createdAt           DateTime   @default(now())
   updatedAt           DateTime   @updatedAt
 }
 
 model Skill {
   id          String     @id @default(uuid())
-  portfolio   Portfolio @relation(fields: [portfolioId], references: [id])
-  portfolioId String
-
+  userId             String
+  user        User          @relation(fields: [userId], references: [id])
   name        String
-
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 }
 
 model Experience {
   id           String     @id @default(uuid())
-  portfolio    Portfolio @relation(fields: [portfolioId], references: [id])
-  portfolioId  String
-
+  userId             String
+  user        User          @relation(fields: [userId], references: [id])
   companyName  String
   position     String
   description  String?
   startDate    DateTime
   endDate      DateTime?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
 
+model Education {
+  id           String     @id @default(uuid())
+  userId             String
+  user        User          @relation(fields: [userId], references: [id])
+  educationName  String
+  description  String?
+  startDate    DateTime
+  endDate      DateTime?
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
 }

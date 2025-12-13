@@ -26,7 +26,7 @@ export type AggregateExperience = {
 
 export type ExperienceMinAggregateOutputType = {
   id: string | null
-  portfolioId: string | null
+  userId: string | null
   companyName: string | null
   position: string | null
   description: string | null
@@ -38,7 +38,7 @@ export type ExperienceMinAggregateOutputType = {
 
 export type ExperienceMaxAggregateOutputType = {
   id: string | null
-  portfolioId: string | null
+  userId: string | null
   companyName: string | null
   position: string | null
   description: string | null
@@ -50,7 +50,7 @@ export type ExperienceMaxAggregateOutputType = {
 
 export type ExperienceCountAggregateOutputType = {
   id: number
-  portfolioId: number
+  userId: number
   companyName: number
   position: number
   description: number
@@ -64,7 +64,7 @@ export type ExperienceCountAggregateOutputType = {
 
 export type ExperienceMinAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   companyName?: true
   position?: true
   description?: true
@@ -76,7 +76,7 @@ export type ExperienceMinAggregateInputType = {
 
 export type ExperienceMaxAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   companyName?: true
   position?: true
   description?: true
@@ -88,7 +88,7 @@ export type ExperienceMaxAggregateInputType = {
 
 export type ExperienceCountAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   companyName?: true
   position?: true
   description?: true
@@ -173,7 +173,7 @@ export type ExperienceGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 
 export type ExperienceGroupByOutputType = {
   id: string
-  portfolioId: string
+  userId: string
   companyName: string
   position: string
   description: string | null
@@ -206,7 +206,7 @@ export type ExperienceWhereInput = {
   OR?: Prisma.ExperienceWhereInput[]
   NOT?: Prisma.ExperienceWhereInput | Prisma.ExperienceWhereInput[]
   id?: Prisma.StringFilter<"Experience"> | string
-  portfolioId?: Prisma.StringFilter<"Experience"> | string
+  userId?: Prisma.StringFilter<"Experience"> | string
   companyName?: Prisma.StringFilter<"Experience"> | string
   position?: Prisma.StringFilter<"Experience"> | string
   description?: Prisma.StringNullableFilter<"Experience"> | string | null
@@ -214,12 +214,12 @@ export type ExperienceWhereInput = {
   endDate?: Prisma.DateTimeNullableFilter<"Experience"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Experience"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Experience"> | Date | string
-  portfolio?: Prisma.XOR<Prisma.PortfolioScalarRelationFilter, Prisma.PortfolioWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type ExperienceOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   companyName?: Prisma.SortOrder
   position?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -227,7 +227,7 @@ export type ExperienceOrderByWithRelationInput = {
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  portfolio?: Prisma.PortfolioOrderByWithRelationInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type ExperienceWhereUniqueInput = Prisma.AtLeast<{
@@ -235,7 +235,7 @@ export type ExperienceWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ExperienceWhereInput | Prisma.ExperienceWhereInput[]
   OR?: Prisma.ExperienceWhereInput[]
   NOT?: Prisma.ExperienceWhereInput | Prisma.ExperienceWhereInput[]
-  portfolioId?: Prisma.StringFilter<"Experience"> | string
+  userId?: Prisma.StringFilter<"Experience"> | string
   companyName?: Prisma.StringFilter<"Experience"> | string
   position?: Prisma.StringFilter<"Experience"> | string
   description?: Prisma.StringNullableFilter<"Experience"> | string | null
@@ -243,12 +243,12 @@ export type ExperienceWhereUniqueInput = Prisma.AtLeast<{
   endDate?: Prisma.DateTimeNullableFilter<"Experience"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Experience"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Experience"> | Date | string
-  portfolio?: Prisma.XOR<Prisma.PortfolioScalarRelationFilter, Prisma.PortfolioWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
 export type ExperienceOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   companyName?: Prisma.SortOrder
   position?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -266,7 +266,7 @@ export type ExperienceScalarWhereWithAggregatesInput = {
   OR?: Prisma.ExperienceScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ExperienceScalarWhereWithAggregatesInput | Prisma.ExperienceScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Experience"> | string
-  portfolioId?: Prisma.StringWithAggregatesFilter<"Experience"> | string
+  userId?: Prisma.StringWithAggregatesFilter<"Experience"> | string
   companyName?: Prisma.StringWithAggregatesFilter<"Experience"> | string
   position?: Prisma.StringWithAggregatesFilter<"Experience"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"Experience"> | string | null
@@ -285,12 +285,12 @@ export type ExperienceCreateInput = {
   endDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  portfolio: Prisma.PortfolioCreateNestedOneWithoutExperienceInput
+  user: Prisma.UserCreateNestedOneWithoutExperiencesInput
 }
 
 export type ExperienceUncheckedCreateInput = {
   id?: string
-  portfolioId: string
+  userId: string
   companyName: string
   position: string
   description?: string | null
@@ -309,12 +309,12 @@ export type ExperienceUpdateInput = {
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  portfolio?: Prisma.PortfolioUpdateOneRequiredWithoutExperienceNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutExperiencesNestedInput
 }
 
 export type ExperienceUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  portfolioId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -326,7 +326,7 @@ export type ExperienceUncheckedUpdateInput = {
 
 export type ExperienceCreateManyInput = {
   id?: string
-  portfolioId: string
+  userId: string
   companyName: string
   position: string
   description?: string | null
@@ -349,7 +349,7 @@ export type ExperienceUpdateManyMutationInput = {
 
 export type ExperienceUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  portfolioId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -371,7 +371,7 @@ export type ExperienceOrderByRelationAggregateInput = {
 
 export type ExperienceCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   companyName?: Prisma.SortOrder
   position?: Prisma.SortOrder
   description?: Prisma.SortOrder
@@ -383,7 +383,7 @@ export type ExperienceCountOrderByAggregateInput = {
 
 export type ExperienceMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   companyName?: Prisma.SortOrder
   position?: Prisma.SortOrder
   description?: Prisma.SortOrder
@@ -395,7 +395,7 @@ export type ExperienceMaxOrderByAggregateInput = {
 
 export type ExperienceMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   companyName?: Prisma.SortOrder
   position?: Prisma.SortOrder
   description?: Prisma.SortOrder
@@ -405,45 +405,45 @@ export type ExperienceMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type ExperienceCreateNestedManyWithoutPortfolioInput = {
-  create?: Prisma.XOR<Prisma.ExperienceCreateWithoutPortfolioInput, Prisma.ExperienceUncheckedCreateWithoutPortfolioInput> | Prisma.ExperienceCreateWithoutPortfolioInput[] | Prisma.ExperienceUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.ExperienceCreateOrConnectWithoutPortfolioInput | Prisma.ExperienceCreateOrConnectWithoutPortfolioInput[]
-  createMany?: Prisma.ExperienceCreateManyPortfolioInputEnvelope
+export type ExperienceCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.ExperienceCreateWithoutUserInput, Prisma.ExperienceUncheckedCreateWithoutUserInput> | Prisma.ExperienceCreateWithoutUserInput[] | Prisma.ExperienceUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ExperienceCreateOrConnectWithoutUserInput | Prisma.ExperienceCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.ExperienceCreateManyUserInputEnvelope
   connect?: Prisma.ExperienceWhereUniqueInput | Prisma.ExperienceWhereUniqueInput[]
 }
 
-export type ExperienceUncheckedCreateNestedManyWithoutPortfolioInput = {
-  create?: Prisma.XOR<Prisma.ExperienceCreateWithoutPortfolioInput, Prisma.ExperienceUncheckedCreateWithoutPortfolioInput> | Prisma.ExperienceCreateWithoutPortfolioInput[] | Prisma.ExperienceUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.ExperienceCreateOrConnectWithoutPortfolioInput | Prisma.ExperienceCreateOrConnectWithoutPortfolioInput[]
-  createMany?: Prisma.ExperienceCreateManyPortfolioInputEnvelope
+export type ExperienceUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.ExperienceCreateWithoutUserInput, Prisma.ExperienceUncheckedCreateWithoutUserInput> | Prisma.ExperienceCreateWithoutUserInput[] | Prisma.ExperienceUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ExperienceCreateOrConnectWithoutUserInput | Prisma.ExperienceCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.ExperienceCreateManyUserInputEnvelope
   connect?: Prisma.ExperienceWhereUniqueInput | Prisma.ExperienceWhereUniqueInput[]
 }
 
-export type ExperienceUpdateManyWithoutPortfolioNestedInput = {
-  create?: Prisma.XOR<Prisma.ExperienceCreateWithoutPortfolioInput, Prisma.ExperienceUncheckedCreateWithoutPortfolioInput> | Prisma.ExperienceCreateWithoutPortfolioInput[] | Prisma.ExperienceUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.ExperienceCreateOrConnectWithoutPortfolioInput | Prisma.ExperienceCreateOrConnectWithoutPortfolioInput[]
-  upsert?: Prisma.ExperienceUpsertWithWhereUniqueWithoutPortfolioInput | Prisma.ExperienceUpsertWithWhereUniqueWithoutPortfolioInput[]
-  createMany?: Prisma.ExperienceCreateManyPortfolioInputEnvelope
+export type ExperienceUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.ExperienceCreateWithoutUserInput, Prisma.ExperienceUncheckedCreateWithoutUserInput> | Prisma.ExperienceCreateWithoutUserInput[] | Prisma.ExperienceUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ExperienceCreateOrConnectWithoutUserInput | Prisma.ExperienceCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.ExperienceUpsertWithWhereUniqueWithoutUserInput | Prisma.ExperienceUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.ExperienceCreateManyUserInputEnvelope
   set?: Prisma.ExperienceWhereUniqueInput | Prisma.ExperienceWhereUniqueInput[]
   disconnect?: Prisma.ExperienceWhereUniqueInput | Prisma.ExperienceWhereUniqueInput[]
   delete?: Prisma.ExperienceWhereUniqueInput | Prisma.ExperienceWhereUniqueInput[]
   connect?: Prisma.ExperienceWhereUniqueInput | Prisma.ExperienceWhereUniqueInput[]
-  update?: Prisma.ExperienceUpdateWithWhereUniqueWithoutPortfolioInput | Prisma.ExperienceUpdateWithWhereUniqueWithoutPortfolioInput[]
-  updateMany?: Prisma.ExperienceUpdateManyWithWhereWithoutPortfolioInput | Prisma.ExperienceUpdateManyWithWhereWithoutPortfolioInput[]
+  update?: Prisma.ExperienceUpdateWithWhereUniqueWithoutUserInput | Prisma.ExperienceUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.ExperienceUpdateManyWithWhereWithoutUserInput | Prisma.ExperienceUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.ExperienceScalarWhereInput | Prisma.ExperienceScalarWhereInput[]
 }
 
-export type ExperienceUncheckedUpdateManyWithoutPortfolioNestedInput = {
-  create?: Prisma.XOR<Prisma.ExperienceCreateWithoutPortfolioInput, Prisma.ExperienceUncheckedCreateWithoutPortfolioInput> | Prisma.ExperienceCreateWithoutPortfolioInput[] | Prisma.ExperienceUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.ExperienceCreateOrConnectWithoutPortfolioInput | Prisma.ExperienceCreateOrConnectWithoutPortfolioInput[]
-  upsert?: Prisma.ExperienceUpsertWithWhereUniqueWithoutPortfolioInput | Prisma.ExperienceUpsertWithWhereUniqueWithoutPortfolioInput[]
-  createMany?: Prisma.ExperienceCreateManyPortfolioInputEnvelope
+export type ExperienceUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.ExperienceCreateWithoutUserInput, Prisma.ExperienceUncheckedCreateWithoutUserInput> | Prisma.ExperienceCreateWithoutUserInput[] | Prisma.ExperienceUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ExperienceCreateOrConnectWithoutUserInput | Prisma.ExperienceCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.ExperienceUpsertWithWhereUniqueWithoutUserInput | Prisma.ExperienceUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.ExperienceCreateManyUserInputEnvelope
   set?: Prisma.ExperienceWhereUniqueInput | Prisma.ExperienceWhereUniqueInput[]
   disconnect?: Prisma.ExperienceWhereUniqueInput | Prisma.ExperienceWhereUniqueInput[]
   delete?: Prisma.ExperienceWhereUniqueInput | Prisma.ExperienceWhereUniqueInput[]
   connect?: Prisma.ExperienceWhereUniqueInput | Prisma.ExperienceWhereUniqueInput[]
-  update?: Prisma.ExperienceUpdateWithWhereUniqueWithoutPortfolioInput | Prisma.ExperienceUpdateWithWhereUniqueWithoutPortfolioInput[]
-  updateMany?: Prisma.ExperienceUpdateManyWithWhereWithoutPortfolioInput | Prisma.ExperienceUpdateManyWithWhereWithoutPortfolioInput[]
+  update?: Prisma.ExperienceUpdateWithWhereUniqueWithoutUserInput | Prisma.ExperienceUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.ExperienceUpdateManyWithWhereWithoutUserInput | Prisma.ExperienceUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.ExperienceScalarWhereInput | Prisma.ExperienceScalarWhereInput[]
 }
 
@@ -451,7 +451,7 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }
 
-export type ExperienceCreateWithoutPortfolioInput = {
+export type ExperienceCreateWithoutUserInput = {
   id?: string
   companyName: string
   position: string
@@ -462,7 +462,7 @@ export type ExperienceCreateWithoutPortfolioInput = {
   updatedAt?: Date | string
 }
 
-export type ExperienceUncheckedCreateWithoutPortfolioInput = {
+export type ExperienceUncheckedCreateWithoutUserInput = {
   id?: string
   companyName: string
   position: string
@@ -473,30 +473,30 @@ export type ExperienceUncheckedCreateWithoutPortfolioInput = {
   updatedAt?: Date | string
 }
 
-export type ExperienceCreateOrConnectWithoutPortfolioInput = {
+export type ExperienceCreateOrConnectWithoutUserInput = {
   where: Prisma.ExperienceWhereUniqueInput
-  create: Prisma.XOR<Prisma.ExperienceCreateWithoutPortfolioInput, Prisma.ExperienceUncheckedCreateWithoutPortfolioInput>
+  create: Prisma.XOR<Prisma.ExperienceCreateWithoutUserInput, Prisma.ExperienceUncheckedCreateWithoutUserInput>
 }
 
-export type ExperienceCreateManyPortfolioInputEnvelope = {
-  data: Prisma.ExperienceCreateManyPortfolioInput | Prisma.ExperienceCreateManyPortfolioInput[]
+export type ExperienceCreateManyUserInputEnvelope = {
+  data: Prisma.ExperienceCreateManyUserInput | Prisma.ExperienceCreateManyUserInput[]
   skipDuplicates?: boolean
 }
 
-export type ExperienceUpsertWithWhereUniqueWithoutPortfolioInput = {
+export type ExperienceUpsertWithWhereUniqueWithoutUserInput = {
   where: Prisma.ExperienceWhereUniqueInput
-  update: Prisma.XOR<Prisma.ExperienceUpdateWithoutPortfolioInput, Prisma.ExperienceUncheckedUpdateWithoutPortfolioInput>
-  create: Prisma.XOR<Prisma.ExperienceCreateWithoutPortfolioInput, Prisma.ExperienceUncheckedCreateWithoutPortfolioInput>
+  update: Prisma.XOR<Prisma.ExperienceUpdateWithoutUserInput, Prisma.ExperienceUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.ExperienceCreateWithoutUserInput, Prisma.ExperienceUncheckedCreateWithoutUserInput>
 }
 
-export type ExperienceUpdateWithWhereUniqueWithoutPortfolioInput = {
+export type ExperienceUpdateWithWhereUniqueWithoutUserInput = {
   where: Prisma.ExperienceWhereUniqueInput
-  data: Prisma.XOR<Prisma.ExperienceUpdateWithoutPortfolioInput, Prisma.ExperienceUncheckedUpdateWithoutPortfolioInput>
+  data: Prisma.XOR<Prisma.ExperienceUpdateWithoutUserInput, Prisma.ExperienceUncheckedUpdateWithoutUserInput>
 }
 
-export type ExperienceUpdateManyWithWhereWithoutPortfolioInput = {
+export type ExperienceUpdateManyWithWhereWithoutUserInput = {
   where: Prisma.ExperienceScalarWhereInput
-  data: Prisma.XOR<Prisma.ExperienceUpdateManyMutationInput, Prisma.ExperienceUncheckedUpdateManyWithoutPortfolioInput>
+  data: Prisma.XOR<Prisma.ExperienceUpdateManyMutationInput, Prisma.ExperienceUncheckedUpdateManyWithoutUserInput>
 }
 
 export type ExperienceScalarWhereInput = {
@@ -504,7 +504,7 @@ export type ExperienceScalarWhereInput = {
   OR?: Prisma.ExperienceScalarWhereInput[]
   NOT?: Prisma.ExperienceScalarWhereInput | Prisma.ExperienceScalarWhereInput[]
   id?: Prisma.StringFilter<"Experience"> | string
-  portfolioId?: Prisma.StringFilter<"Experience"> | string
+  userId?: Prisma.StringFilter<"Experience"> | string
   companyName?: Prisma.StringFilter<"Experience"> | string
   position?: Prisma.StringFilter<"Experience"> | string
   description?: Prisma.StringNullableFilter<"Experience"> | string | null
@@ -514,7 +514,7 @@ export type ExperienceScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Experience"> | Date | string
 }
 
-export type ExperienceCreateManyPortfolioInput = {
+export type ExperienceCreateManyUserInput = {
   id?: string
   companyName: string
   position: string
@@ -525,7 +525,7 @@ export type ExperienceCreateManyPortfolioInput = {
   updatedAt?: Date | string
 }
 
-export type ExperienceUpdateWithoutPortfolioInput = {
+export type ExperienceUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
@@ -536,7 +536,7 @@ export type ExperienceUpdateWithoutPortfolioInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ExperienceUncheckedUpdateWithoutPortfolioInput = {
+export type ExperienceUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
@@ -547,7 +547,7 @@ export type ExperienceUncheckedUpdateWithoutPortfolioInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ExperienceUncheckedUpdateManyWithoutPortfolioInput = {
+export type ExperienceUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
@@ -562,7 +562,7 @@ export type ExperienceUncheckedUpdateManyWithoutPortfolioInput = {
 
 export type ExperienceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   companyName?: boolean
   position?: boolean
   description?: boolean
@@ -570,12 +570,12 @@ export type ExperienceSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   endDate?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["experience"]>
 
 export type ExperienceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   companyName?: boolean
   position?: boolean
   description?: boolean
@@ -583,12 +583,12 @@ export type ExperienceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   endDate?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["experience"]>
 
 export type ExperienceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   companyName?: boolean
   position?: boolean
   description?: boolean
@@ -596,12 +596,12 @@ export type ExperienceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   endDate?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["experience"]>
 
 export type ExperienceSelectScalar = {
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   companyName?: boolean
   position?: boolean
   description?: boolean
@@ -611,25 +611,25 @@ export type ExperienceSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ExperienceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "portfolioId" | "companyName" | "position" | "description" | "startDate" | "endDate" | "createdAt" | "updatedAt", ExtArgs["result"]["experience"]>
+export type ExperienceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "companyName" | "position" | "description" | "startDate" | "endDate" | "createdAt" | "updatedAt", ExtArgs["result"]["experience"]>
 export type ExperienceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type ExperienceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type ExperienceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $ExperiencePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Experience"
   objects: {
-    portfolio: Prisma.$PortfolioPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    portfolioId: string
+    userId: string
     companyName: string
     position: string
     description: string | null
@@ -1031,7 +1031,7 @@ readonly fields: ExperienceFieldRefs;
  */
 export interface Prisma__ExperienceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  portfolio<T extends Prisma.PortfolioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PortfolioDefaultArgs<ExtArgs>>): Prisma.Prisma__PortfolioClient<runtime.Types.Result.GetResult<Prisma.$PortfolioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1062,7 +1062,7 @@ export interface Prisma__ExperienceClient<T, Null = never, ExtArgs extends runti
  */
 export interface ExperienceFieldRefs {
   readonly id: Prisma.FieldRef<"Experience", 'String'>
-  readonly portfolioId: Prisma.FieldRef<"Experience", 'String'>
+  readonly userId: Prisma.FieldRef<"Experience", 'String'>
   readonly companyName: Prisma.FieldRef<"Experience", 'String'>
   readonly position: Prisma.FieldRef<"Experience", 'String'>
   readonly description: Prisma.FieldRef<"Experience", 'String'>

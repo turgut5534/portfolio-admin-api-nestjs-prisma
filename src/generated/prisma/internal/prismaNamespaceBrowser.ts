@@ -52,11 +52,11 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Portfolio: 'Portfolio',
   Profile: 'Profile',
   Project: 'Project',
   Skill: 'Skill',
-  Experience: 'Experience'
+  Experience: 'Experience',
+  Education: 'Education'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -86,21 +86,9 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-export const PortfolioScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  description: 'description',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type PortfolioScalarFieldEnum = (typeof PortfolioScalarFieldEnum)[keyof typeof PortfolioScalarFieldEnum]
-
-
 export const ProfileScalarFieldEnum = {
   id: 'id',
-  portfolioId: 'portfolioId',
+  userId: 'userId',
   fullName: 'fullName',
   title: 'title',
   bio: 'bio',
@@ -120,7 +108,7 @@ export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeo
 
 export const ProjectScalarFieldEnum = {
   id: 'id',
-  portfolioId: 'portfolioId',
+  userId: 'userId',
   title: 'title',
   shortDescription: 'shortDescription',
   longDescription: 'longDescription',
@@ -137,7 +125,7 @@ export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeo
 
 export const SkillScalarFieldEnum = {
   id: 'id',
-  portfolioId: 'portfolioId',
+  userId: 'userId',
   name: 'name',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -148,7 +136,7 @@ export type SkillScalarFieldEnum = (typeof SkillScalarFieldEnum)[keyof typeof Sk
 
 export const ExperienceScalarFieldEnum = {
   id: 'id',
-  portfolioId: 'portfolioId',
+  userId: 'userId',
   companyName: 'companyName',
   position: 'position',
   description: 'description',
@@ -159,6 +147,20 @@ export const ExperienceScalarFieldEnum = {
 } as const
 
 export type ExperienceScalarFieldEnum = (typeof ExperienceScalarFieldEnum)[keyof typeof ExperienceScalarFieldEnum]
+
+
+export const EducationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  educationName: 'educationName',
+  description: 'description',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EducationScalarFieldEnum = (typeof EducationScalarFieldEnum)[keyof typeof EducationScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -43,11 +43,6 @@ export { Prisma }
  */
 export type User = Prisma.UserModel
 /**
- * Model Portfolio
- * 
- */
-export type Portfolio = Prisma.PortfolioModel
-/**
  * Model Profile
  * 
  */
@@ -67,3 +62,8 @@ export type Skill = Prisma.SkillModel
  * 
  */
 export type Experience = Prisma.ExperienceModel
+/**
+ * Model Education
+ * 
+ */
+export type Education = Prisma.EducationModel

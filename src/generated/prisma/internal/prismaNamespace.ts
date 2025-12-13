@@ -385,11 +385,11 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   User: 'User',
-  Portfolio: 'Portfolio',
   Profile: 'Profile',
   Project: 'Project',
   Skill: 'Skill',
-  Experience: 'Experience'
+  Experience: 'Experience',
+  Education: 'Education'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -405,7 +405,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "portfolio" | "profile" | "project" | "skill" | "experience"
+    modelProps: "user" | "profile" | "project" | "skill" | "experience" | "education"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -480,80 +480,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.UserCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.UserCountAggregateOutputType> | number
-        }
-      }
-    }
-    Portfolio: {
-      payload: Prisma.$PortfolioPayload<ExtArgs>
-      fields: Prisma.PortfolioFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.PortfolioFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.PortfolioFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        findFirst: {
-          args: Prisma.PortfolioFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.PortfolioFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        findMany: {
-          args: Prisma.PortfolioFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>[]
-        }
-        create: {
-          args: Prisma.PortfolioCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        createMany: {
-          args: Prisma.PortfolioCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.PortfolioCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>[]
-        }
-        delete: {
-          args: Prisma.PortfolioDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        update: {
-          args: Prisma.PortfolioUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        deleteMany: {
-          args: Prisma.PortfolioDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.PortfolioUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.PortfolioUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>[]
-        }
-        upsert: {
-          args: Prisma.PortfolioUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        aggregate: {
-          args: Prisma.PortfolioAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregatePortfolio>
-        }
-        groupBy: {
-          args: Prisma.PortfolioGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PortfolioGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.PortfolioCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PortfolioCountAggregateOutputType> | number
         }
       }
     }
@@ -853,6 +779,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Education: {
+      payload: Prisma.$EducationPayload<ExtArgs>
+      fields: Prisma.EducationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EducationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EducationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EducationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EducationPayload>
+        }
+        findFirst: {
+          args: Prisma.EducationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EducationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EducationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EducationPayload>
+        }
+        findMany: {
+          args: Prisma.EducationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EducationPayload>[]
+        }
+        create: {
+          args: Prisma.EducationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EducationPayload>
+        }
+        createMany: {
+          args: Prisma.EducationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EducationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EducationPayload>[]
+        }
+        delete: {
+          args: Prisma.EducationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EducationPayload>
+        }
+        update: {
+          args: Prisma.EducationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EducationPayload>
+        }
+        deleteMany: {
+          args: Prisma.EducationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EducationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EducationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EducationPayload>[]
+        }
+        upsert: {
+          args: Prisma.EducationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EducationPayload>
+        }
+        aggregate: {
+          args: Prisma.EducationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEducation>
+        }
+        groupBy: {
+          args: Prisma.EducationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EducationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EducationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EducationCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -903,21 +903,9 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-export const PortfolioScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  description: 'description',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type PortfolioScalarFieldEnum = (typeof PortfolioScalarFieldEnum)[keyof typeof PortfolioScalarFieldEnum]
-
-
 export const ProfileScalarFieldEnum = {
   id: 'id',
-  portfolioId: 'portfolioId',
+  userId: 'userId',
   fullName: 'fullName',
   title: 'title',
   bio: 'bio',
@@ -937,7 +925,7 @@ export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeo
 
 export const ProjectScalarFieldEnum = {
   id: 'id',
-  portfolioId: 'portfolioId',
+  userId: 'userId',
   title: 'title',
   shortDescription: 'shortDescription',
   longDescription: 'longDescription',
@@ -954,7 +942,7 @@ export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeo
 
 export const SkillScalarFieldEnum = {
   id: 'id',
-  portfolioId: 'portfolioId',
+  userId: 'userId',
   name: 'name',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -965,7 +953,7 @@ export type SkillScalarFieldEnum = (typeof SkillScalarFieldEnum)[keyof typeof Sk
 
 export const ExperienceScalarFieldEnum = {
   id: 'id',
-  portfolioId: 'portfolioId',
+  userId: 'userId',
   companyName: 'companyName',
   position: 'position',
   description: 'description',
@@ -976,6 +964,20 @@ export const ExperienceScalarFieldEnum = {
 } as const
 
 export type ExperienceScalarFieldEnum = (typeof ExperienceScalarFieldEnum)[keyof typeof ExperienceScalarFieldEnum]
+
+
+export const EducationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  educationName: 'educationName',
+  description: 'description',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EducationScalarFieldEnum = (typeof EducationScalarFieldEnum)[keyof typeof EducationScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1152,11 +1154,11 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
-  portfolio?: Prisma.PortfolioOmit
   profile?: Prisma.ProfileOmit
   project?: Prisma.ProjectOmit
   skill?: Prisma.SkillOmit
   experience?: Prisma.ExperienceOmit
+  education?: Prisma.EducationOmit
 }
 
 /* Types for Logging */

@@ -26,7 +26,7 @@ export type AggregateProfile = {
 
 export type ProfileMinAggregateOutputType = {
   id: string | null
-  portfolioId: string | null
+  userId: string | null
   fullName: string | null
   title: string | null
   bio: string | null
@@ -43,7 +43,7 @@ export type ProfileMinAggregateOutputType = {
 
 export type ProfileMaxAggregateOutputType = {
   id: string | null
-  portfolioId: string | null
+  userId: string | null
   fullName: string | null
   title: string | null
   bio: string | null
@@ -60,7 +60,7 @@ export type ProfileMaxAggregateOutputType = {
 
 export type ProfileCountAggregateOutputType = {
   id: number
-  portfolioId: number
+  userId: number
   fullName: number
   title: number
   bio: number
@@ -79,7 +79,7 @@ export type ProfileCountAggregateOutputType = {
 
 export type ProfileMinAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   fullName?: true
   title?: true
   bio?: true
@@ -96,7 +96,7 @@ export type ProfileMinAggregateInputType = {
 
 export type ProfileMaxAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   fullName?: true
   title?: true
   bio?: true
@@ -113,7 +113,7 @@ export type ProfileMaxAggregateInputType = {
 
 export type ProfileCountAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   fullName?: true
   title?: true
   bio?: true
@@ -203,12 +203,12 @@ export type ProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type ProfileGroupByOutputType = {
   id: string
-  portfolioId: string
+  userId: string
   fullName: string
   title: string
   bio: string
   location: string | null
-  email: string
+  email: string | null
   phone: string | null
   githubUrl: string | null
   linkedinUrl: string | null
@@ -241,12 +241,12 @@ export type ProfileWhereInput = {
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   id?: Prisma.StringFilter<"Profile"> | string
-  portfolioId?: Prisma.StringFilter<"Profile"> | string
+  userId?: Prisma.StringFilter<"Profile"> | string
   fullName?: Prisma.StringFilter<"Profile"> | string
   title?: Prisma.StringFilter<"Profile"> | string
   bio?: Prisma.StringFilter<"Profile"> | string
   location?: Prisma.StringNullableFilter<"Profile"> | string | null
-  email?: Prisma.StringFilter<"Profile"> | string
+  email?: Prisma.StringNullableFilter<"Profile"> | string | null
   phone?: Prisma.StringNullableFilter<"Profile"> | string | null
   githubUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   linkedinUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -254,17 +254,17 @@ export type ProfileWhereInput = {
   cvUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
-  portfolio?: Prisma.XOR<Prisma.PortfolioScalarRelationFilter, Prisma.PortfolioWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type ProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   title?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
-  email?: Prisma.SortOrder
+  email?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   githubUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   linkedinUrl?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -272,12 +272,12 @@ export type ProfileOrderByWithRelationInput = {
   cvUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  portfolio?: Prisma.PortfolioOrderByWithRelationInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  portfolioId?: string
+  userId?: string
   AND?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
@@ -285,7 +285,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"Profile"> | string
   bio?: Prisma.StringFilter<"Profile"> | string
   location?: Prisma.StringNullableFilter<"Profile"> | string | null
-  email?: Prisma.StringFilter<"Profile"> | string
+  email?: Prisma.StringNullableFilter<"Profile"> | string | null
   phone?: Prisma.StringNullableFilter<"Profile"> | string | null
   githubUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   linkedinUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -293,17 +293,17 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   cvUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
-  portfolio?: Prisma.XOR<Prisma.PortfolioScalarRelationFilter, Prisma.PortfolioWhereInput>
-}, "id" | "portfolioId">
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+}, "id" | "userId">
 
 export type ProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   title?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
-  email?: Prisma.SortOrder
+  email?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   githubUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   linkedinUrl?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -321,12 +321,12 @@ export type ProfileScalarWhereWithAggregatesInput = {
   OR?: Prisma.ProfileScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ProfileScalarWhereWithAggregatesInput | Prisma.ProfileScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Profile"> | string
-  portfolioId?: Prisma.StringWithAggregatesFilter<"Profile"> | string
+  userId?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   fullName?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   title?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   bio?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   location?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
-  email?: Prisma.StringWithAggregatesFilter<"Profile"> | string
+  email?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   phone?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   githubUrl?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   linkedinUrl?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
@@ -342,7 +342,7 @@ export type ProfileCreateInput = {
   title: string
   bio: string
   location?: string | null
-  email: string
+  email?: string | null
   phone?: string | null
   githubUrl?: string | null
   linkedinUrl?: string | null
@@ -350,17 +350,17 @@ export type ProfileCreateInput = {
   cvUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  portfolio: Prisma.PortfolioCreateNestedOneWithoutProfileInput
+  user: Prisma.UserCreateNestedOneWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateInput = {
   id?: string
-  portfolioId: string
+  userId: string
   fullName: string
   title: string
   bio: string
   location?: string | null
-  email: string
+  email?: string | null
   phone?: string | null
   githubUrl?: string | null
   linkedinUrl?: string | null
@@ -376,7 +376,7 @@ export type ProfileUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   githubUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -384,17 +384,17 @@ export type ProfileUpdateInput = {
   cvUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  portfolio?: Prisma.PortfolioUpdateOneRequiredWithoutProfileNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  portfolioId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   githubUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -406,12 +406,12 @@ export type ProfileUncheckedUpdateInput = {
 
 export type ProfileCreateManyInput = {
   id?: string
-  portfolioId: string
+  userId: string
   fullName: string
   title: string
   bio: string
   location?: string | null
-  email: string
+  email?: string | null
   phone?: string | null
   githubUrl?: string | null
   linkedinUrl?: string | null
@@ -427,7 +427,7 @@ export type ProfileUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   githubUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -439,12 +439,12 @@ export type ProfileUpdateManyMutationInput = {
 
 export type ProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  portfolioId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   githubUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -461,7 +461,7 @@ export type ProfileNullableScalarRelationFilter = {
 
 export type ProfileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   title?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -478,7 +478,7 @@ export type ProfileCountOrderByAggregateInput = {
 
 export type ProfileMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   title?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -495,7 +495,7 @@ export type ProfileMaxOrderByAggregateInput = {
 
 export type ProfileMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   title?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -510,45 +510,49 @@ export type ProfileMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type ProfileCreateNestedOneWithoutPortfolioInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutPortfolioInput, Prisma.ProfileUncheckedCreateWithoutPortfolioInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutPortfolioInput
+export type ProfileCreateNestedOneWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput
   connect?: Prisma.ProfileWhereUniqueInput
 }
 
-export type ProfileUncheckedCreateNestedOneWithoutPortfolioInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutPortfolioInput, Prisma.ProfileUncheckedCreateWithoutPortfolioInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutPortfolioInput
+export type ProfileUncheckedCreateNestedOneWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput
   connect?: Prisma.ProfileWhereUniqueInput
 }
 
-export type ProfileUpdateOneWithoutPortfolioNestedInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutPortfolioInput, Prisma.ProfileUncheckedCreateWithoutPortfolioInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutPortfolioInput
-  upsert?: Prisma.ProfileUpsertWithoutPortfolioInput
+export type ProfileUpdateOneWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput
+  upsert?: Prisma.ProfileUpsertWithoutUserInput
   disconnect?: Prisma.ProfileWhereInput | boolean
   delete?: Prisma.ProfileWhereInput | boolean
   connect?: Prisma.ProfileWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutPortfolioInput, Prisma.ProfileUpdateWithoutPortfolioInput>, Prisma.ProfileUncheckedUpdateWithoutPortfolioInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutUserInput, Prisma.ProfileUpdateWithoutUserInput>, Prisma.ProfileUncheckedUpdateWithoutUserInput>
 }
 
-export type ProfileUncheckedUpdateOneWithoutPortfolioNestedInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutPortfolioInput, Prisma.ProfileUncheckedCreateWithoutPortfolioInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutPortfolioInput
-  upsert?: Prisma.ProfileUpsertWithoutPortfolioInput
+export type ProfileUncheckedUpdateOneWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput
+  upsert?: Prisma.ProfileUpsertWithoutUserInput
   disconnect?: Prisma.ProfileWhereInput | boolean
   delete?: Prisma.ProfileWhereInput | boolean
   connect?: Prisma.ProfileWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutPortfolioInput, Prisma.ProfileUpdateWithoutPortfolioInput>, Prisma.ProfileUncheckedUpdateWithoutPortfolioInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutUserInput, Prisma.ProfileUpdateWithoutUserInput>, Prisma.ProfileUncheckedUpdateWithoutUserInput>
 }
 
-export type ProfileCreateWithoutPortfolioInput = {
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type ProfileCreateWithoutUserInput = {
   id?: string
   fullName: string
   title: string
   bio: string
   location?: string | null
-  email: string
+  email?: string | null
   phone?: string | null
   githubUrl?: string | null
   linkedinUrl?: string | null
@@ -558,13 +562,13 @@ export type ProfileCreateWithoutPortfolioInput = {
   updatedAt?: Date | string
 }
 
-export type ProfileUncheckedCreateWithoutPortfolioInput = {
+export type ProfileUncheckedCreateWithoutUserInput = {
   id?: string
   fullName: string
   title: string
   bio: string
   location?: string | null
-  email: string
+  email?: string | null
   phone?: string | null
   githubUrl?: string | null
   linkedinUrl?: string | null
@@ -574,29 +578,29 @@ export type ProfileUncheckedCreateWithoutPortfolioInput = {
   updatedAt?: Date | string
 }
 
-export type ProfileCreateOrConnectWithoutPortfolioInput = {
+export type ProfileCreateOrConnectWithoutUserInput = {
   where: Prisma.ProfileWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProfileCreateWithoutPortfolioInput, Prisma.ProfileUncheckedCreateWithoutPortfolioInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
 }
 
-export type ProfileUpsertWithoutPortfolioInput = {
-  update: Prisma.XOR<Prisma.ProfileUpdateWithoutPortfolioInput, Prisma.ProfileUncheckedUpdateWithoutPortfolioInput>
-  create: Prisma.XOR<Prisma.ProfileCreateWithoutPortfolioInput, Prisma.ProfileUncheckedCreateWithoutPortfolioInput>
+export type ProfileUpsertWithoutUserInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutUserInput, Prisma.ProfileUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
   where?: Prisma.ProfileWhereInput
 }
 
-export type ProfileUpdateToOneWithWhereWithoutPortfolioInput = {
+export type ProfileUpdateToOneWithWhereWithoutUserInput = {
   where?: Prisma.ProfileWhereInput
-  data: Prisma.XOR<Prisma.ProfileUpdateWithoutPortfolioInput, Prisma.ProfileUncheckedUpdateWithoutPortfolioInput>
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutUserInput, Prisma.ProfileUncheckedUpdateWithoutUserInput>
 }
 
-export type ProfileUpdateWithoutPortfolioInput = {
+export type ProfileUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   githubUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -606,13 +610,13 @@ export type ProfileUpdateWithoutPortfolioInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ProfileUncheckedUpdateWithoutPortfolioInput = {
+export type ProfileUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   githubUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -626,7 +630,7 @@ export type ProfileUncheckedUpdateWithoutPortfolioInput = {
 
 export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   fullName?: boolean
   title?: boolean
   bio?: boolean
@@ -639,12 +643,12 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   cvUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
 export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   fullName?: boolean
   title?: boolean
   bio?: boolean
@@ -657,12 +661,12 @@ export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   cvUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
 export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   fullName?: boolean
   title?: boolean
   bio?: boolean
@@ -675,12 +679,12 @@ export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   cvUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
 export type ProfileSelectScalar = {
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   fullName?: boolean
   title?: boolean
   bio?: boolean
@@ -695,30 +699,30 @@ export type ProfileSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "portfolioId" | "fullName" | "title" | "bio" | "location" | "email" | "phone" | "githubUrl" | "linkedinUrl" | "websiteUrl" | "cvUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
+export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "fullName" | "title" | "bio" | "location" | "email" | "phone" | "githubUrl" | "linkedinUrl" | "websiteUrl" | "cvUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
 export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type ProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type ProfileIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Profile"
   objects: {
-    portfolio: Prisma.$PortfolioPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    portfolioId: string
+    userId: string
     fullName: string
     title: string
     bio: string
     location: string | null
-    email: string
+    email: string | null
     phone: string | null
     githubUrl: string | null
     linkedinUrl: string | null
@@ -1120,7 +1124,7 @@ readonly fields: ProfileFieldRefs;
  */
 export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  portfolio<T extends Prisma.PortfolioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PortfolioDefaultArgs<ExtArgs>>): Prisma.Prisma__PortfolioClient<runtime.Types.Result.GetResult<Prisma.$PortfolioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1151,7 +1155,7 @@ export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface ProfileFieldRefs {
   readonly id: Prisma.FieldRef<"Profile", 'String'>
-  readonly portfolioId: Prisma.FieldRef<"Profile", 'String'>
+  readonly userId: Prisma.FieldRef<"Profile", 'String'>
   readonly fullName: Prisma.FieldRef<"Profile", 'String'>
   readonly title: Prisma.FieldRef<"Profile", 'String'>
   readonly bio: Prisma.FieldRef<"Profile", 'String'>

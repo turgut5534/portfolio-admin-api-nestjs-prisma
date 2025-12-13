@@ -26,7 +26,7 @@ export type AggregateProject = {
 
 export type ProjectMinAggregateOutputType = {
   id: string | null
-  portfolioId: string | null
+  userId: string | null
   title: string | null
   shortDescription: string | null
   longDescription: string | null
@@ -40,7 +40,7 @@ export type ProjectMinAggregateOutputType = {
 
 export type ProjectMaxAggregateOutputType = {
   id: string | null
-  portfolioId: string | null
+  userId: string | null
   title: string | null
   shortDescription: string | null
   longDescription: string | null
@@ -54,7 +54,7 @@ export type ProjectMaxAggregateOutputType = {
 
 export type ProjectCountAggregateOutputType = {
   id: number
-  portfolioId: number
+  userId: number
   title: number
   shortDescription: number
   longDescription: number
@@ -70,7 +70,7 @@ export type ProjectCountAggregateOutputType = {
 
 export type ProjectMinAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   title?: true
   shortDescription?: true
   longDescription?: true
@@ -84,7 +84,7 @@ export type ProjectMinAggregateInputType = {
 
 export type ProjectMaxAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   title?: true
   shortDescription?: true
   longDescription?: true
@@ -98,7 +98,7 @@ export type ProjectMaxAggregateInputType = {
 
 export type ProjectCountAggregateInputType = {
   id?: true
-  portfolioId?: true
+  userId?: true
   title?: true
   shortDescription?: true
   longDescription?: true
@@ -185,7 +185,7 @@ export type ProjectGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type ProjectGroupByOutputType = {
   id: string
-  portfolioId: string
+  userId: string
   title: string
   shortDescription: string
   longDescription: string | null
@@ -220,7 +220,7 @@ export type ProjectWhereInput = {
   OR?: Prisma.ProjectWhereInput[]
   NOT?: Prisma.ProjectWhereInput | Prisma.ProjectWhereInput[]
   id?: Prisma.StringFilter<"Project"> | string
-  portfolioId?: Prisma.StringFilter<"Project"> | string
+  userId?: Prisma.StringFilter<"Project"> | string
   title?: Prisma.StringFilter<"Project"> | string
   shortDescription?: Prisma.StringFilter<"Project"> | string
   longDescription?: Prisma.StringNullableFilter<"Project"> | string | null
@@ -230,12 +230,12 @@ export type ProjectWhereInput = {
   isFeatured?: Prisma.BoolFilter<"Project"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
-  portfolio?: Prisma.XOR<Prisma.PortfolioScalarRelationFilter, Prisma.PortfolioWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type ProjectOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
   longDescription?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -245,7 +245,7 @@ export type ProjectOrderByWithRelationInput = {
   isFeatured?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  portfolio?: Prisma.PortfolioOrderByWithRelationInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -253,7 +253,7 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ProjectWhereInput | Prisma.ProjectWhereInput[]
   OR?: Prisma.ProjectWhereInput[]
   NOT?: Prisma.ProjectWhereInput | Prisma.ProjectWhereInput[]
-  portfolioId?: Prisma.StringFilter<"Project"> | string
+  userId?: Prisma.StringFilter<"Project"> | string
   title?: Prisma.StringFilter<"Project"> | string
   shortDescription?: Prisma.StringFilter<"Project"> | string
   longDescription?: Prisma.StringNullableFilter<"Project"> | string | null
@@ -263,12 +263,12 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   isFeatured?: Prisma.BoolFilter<"Project"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
-  portfolio?: Prisma.XOR<Prisma.PortfolioScalarRelationFilter, Prisma.PortfolioWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
 export type ProjectOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
   longDescription?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -288,7 +288,7 @@ export type ProjectScalarWhereWithAggregatesInput = {
   OR?: Prisma.ProjectScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ProjectScalarWhereWithAggregatesInput | Prisma.ProjectScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Project"> | string
-  portfolioId?: Prisma.StringWithAggregatesFilter<"Project"> | string
+  userId?: Prisma.StringWithAggregatesFilter<"Project"> | string
   title?: Prisma.StringWithAggregatesFilter<"Project"> | string
   shortDescription?: Prisma.StringWithAggregatesFilter<"Project"> | string
   longDescription?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
@@ -311,12 +311,12 @@ export type ProjectCreateInput = {
   isFeatured?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  portfolio: Prisma.PortfolioCreateNestedOneWithoutProjectsInput
+  user: Prisma.UserCreateNestedOneWithoutProjectsInput
 }
 
 export type ProjectUncheckedCreateInput = {
   id?: string
-  portfolioId: string
+  userId: string
   title: string
   shortDescription: string
   longDescription?: string | null
@@ -339,12 +339,12 @@ export type ProjectUpdateInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  portfolio?: Prisma.PortfolioUpdateOneRequiredWithoutProjectsNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutProjectsNestedInput
 }
 
 export type ProjectUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  portfolioId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
   longDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -358,7 +358,7 @@ export type ProjectUncheckedUpdateInput = {
 
 export type ProjectCreateManyInput = {
   id?: string
-  portfolioId: string
+  userId: string
   title: string
   shortDescription: string
   longDescription?: string | null
@@ -385,7 +385,7 @@ export type ProjectUpdateManyMutationInput = {
 
 export type ProjectUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  portfolioId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
   longDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -409,7 +409,7 @@ export type ProjectOrderByRelationAggregateInput = {
 
 export type ProjectCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
   longDescription?: Prisma.SortOrder
@@ -423,7 +423,7 @@ export type ProjectCountOrderByAggregateInput = {
 
 export type ProjectMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
   longDescription?: Prisma.SortOrder
@@ -437,7 +437,7 @@ export type ProjectMaxOrderByAggregateInput = {
 
 export type ProjectMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  portfolioId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
   longDescription?: Prisma.SortOrder
@@ -449,45 +449,45 @@ export type ProjectMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type ProjectCreateNestedManyWithoutPortfolioInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutPortfolioInput, Prisma.ProjectUncheckedCreateWithoutPortfolioInput> | Prisma.ProjectCreateWithoutPortfolioInput[] | Prisma.ProjectUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutPortfolioInput | Prisma.ProjectCreateOrConnectWithoutPortfolioInput[]
-  createMany?: Prisma.ProjectCreateManyPortfolioInputEnvelope
+export type ProjectCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutUserInput, Prisma.ProjectUncheckedCreateWithoutUserInput> | Prisma.ProjectCreateWithoutUserInput[] | Prisma.ProjectUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutUserInput | Prisma.ProjectCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.ProjectCreateManyUserInputEnvelope
   connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
 }
 
-export type ProjectUncheckedCreateNestedManyWithoutPortfolioInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutPortfolioInput, Prisma.ProjectUncheckedCreateWithoutPortfolioInput> | Prisma.ProjectCreateWithoutPortfolioInput[] | Prisma.ProjectUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutPortfolioInput | Prisma.ProjectCreateOrConnectWithoutPortfolioInput[]
-  createMany?: Prisma.ProjectCreateManyPortfolioInputEnvelope
+export type ProjectUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutUserInput, Prisma.ProjectUncheckedCreateWithoutUserInput> | Prisma.ProjectCreateWithoutUserInput[] | Prisma.ProjectUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutUserInput | Prisma.ProjectCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.ProjectCreateManyUserInputEnvelope
   connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
 }
 
-export type ProjectUpdateManyWithoutPortfolioNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutPortfolioInput, Prisma.ProjectUncheckedCreateWithoutPortfolioInput> | Prisma.ProjectCreateWithoutPortfolioInput[] | Prisma.ProjectUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutPortfolioInput | Prisma.ProjectCreateOrConnectWithoutPortfolioInput[]
-  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutPortfolioInput | Prisma.ProjectUpsertWithWhereUniqueWithoutPortfolioInput[]
-  createMany?: Prisma.ProjectCreateManyPortfolioInputEnvelope
+export type ProjectUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutUserInput, Prisma.ProjectUncheckedCreateWithoutUserInput> | Prisma.ProjectCreateWithoutUserInput[] | Prisma.ProjectUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutUserInput | Prisma.ProjectCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutUserInput | Prisma.ProjectUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.ProjectCreateManyUserInputEnvelope
   set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
   disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
   delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
   connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutPortfolioInput | Prisma.ProjectUpdateWithWhereUniqueWithoutPortfolioInput[]
-  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutPortfolioInput | Prisma.ProjectUpdateManyWithWhereWithoutPortfolioInput[]
+  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutUserInput | Prisma.ProjectUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutUserInput | Prisma.ProjectUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
 }
 
-export type ProjectUncheckedUpdateManyWithoutPortfolioNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutPortfolioInput, Prisma.ProjectUncheckedCreateWithoutPortfolioInput> | Prisma.ProjectCreateWithoutPortfolioInput[] | Prisma.ProjectUncheckedCreateWithoutPortfolioInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutPortfolioInput | Prisma.ProjectCreateOrConnectWithoutPortfolioInput[]
-  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutPortfolioInput | Prisma.ProjectUpsertWithWhereUniqueWithoutPortfolioInput[]
-  createMany?: Prisma.ProjectCreateManyPortfolioInputEnvelope
+export type ProjectUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutUserInput, Prisma.ProjectUncheckedCreateWithoutUserInput> | Prisma.ProjectCreateWithoutUserInput[] | Prisma.ProjectUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutUserInput | Prisma.ProjectCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutUserInput | Prisma.ProjectUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.ProjectCreateManyUserInputEnvelope
   set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
   disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
   delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
   connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutPortfolioInput | Prisma.ProjectUpdateWithWhereUniqueWithoutPortfolioInput[]
-  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutPortfolioInput | Prisma.ProjectUpdateManyWithWhereWithoutPortfolioInput[]
+  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutUserInput | Prisma.ProjectUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutUserInput | Prisma.ProjectUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
 }
 
@@ -495,7 +495,7 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
-export type ProjectCreateWithoutPortfolioInput = {
+export type ProjectCreateWithoutUserInput = {
   id?: string
   title: string
   shortDescription: string
@@ -508,7 +508,7 @@ export type ProjectCreateWithoutPortfolioInput = {
   updatedAt?: Date | string
 }
 
-export type ProjectUncheckedCreateWithoutPortfolioInput = {
+export type ProjectUncheckedCreateWithoutUserInput = {
   id?: string
   title: string
   shortDescription: string
@@ -521,30 +521,30 @@ export type ProjectUncheckedCreateWithoutPortfolioInput = {
   updatedAt?: Date | string
 }
 
-export type ProjectCreateOrConnectWithoutPortfolioInput = {
+export type ProjectCreateOrConnectWithoutUserInput = {
   where: Prisma.ProjectWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutPortfolioInput, Prisma.ProjectUncheckedCreateWithoutPortfolioInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutUserInput, Prisma.ProjectUncheckedCreateWithoutUserInput>
 }
 
-export type ProjectCreateManyPortfolioInputEnvelope = {
-  data: Prisma.ProjectCreateManyPortfolioInput | Prisma.ProjectCreateManyPortfolioInput[]
+export type ProjectCreateManyUserInputEnvelope = {
+  data: Prisma.ProjectCreateManyUserInput | Prisma.ProjectCreateManyUserInput[]
   skipDuplicates?: boolean
 }
 
-export type ProjectUpsertWithWhereUniqueWithoutPortfolioInput = {
+export type ProjectUpsertWithWhereUniqueWithoutUserInput = {
   where: Prisma.ProjectWhereUniqueInput
-  update: Prisma.XOR<Prisma.ProjectUpdateWithoutPortfolioInput, Prisma.ProjectUncheckedUpdateWithoutPortfolioInput>
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutPortfolioInput, Prisma.ProjectUncheckedCreateWithoutPortfolioInput>
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutUserInput, Prisma.ProjectUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutUserInput, Prisma.ProjectUncheckedCreateWithoutUserInput>
 }
 
-export type ProjectUpdateWithWhereUniqueWithoutPortfolioInput = {
+export type ProjectUpdateWithWhereUniqueWithoutUserInput = {
   where: Prisma.ProjectWhereUniqueInput
-  data: Prisma.XOR<Prisma.ProjectUpdateWithoutPortfolioInput, Prisma.ProjectUncheckedUpdateWithoutPortfolioInput>
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutUserInput, Prisma.ProjectUncheckedUpdateWithoutUserInput>
 }
 
-export type ProjectUpdateManyWithWhereWithoutPortfolioInput = {
+export type ProjectUpdateManyWithWhereWithoutUserInput = {
   where: Prisma.ProjectScalarWhereInput
-  data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutPortfolioInput>
+  data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutUserInput>
 }
 
 export type ProjectScalarWhereInput = {
@@ -552,7 +552,7 @@ export type ProjectScalarWhereInput = {
   OR?: Prisma.ProjectScalarWhereInput[]
   NOT?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
   id?: Prisma.StringFilter<"Project"> | string
-  portfolioId?: Prisma.StringFilter<"Project"> | string
+  userId?: Prisma.StringFilter<"Project"> | string
   title?: Prisma.StringFilter<"Project"> | string
   shortDescription?: Prisma.StringFilter<"Project"> | string
   longDescription?: Prisma.StringNullableFilter<"Project"> | string | null
@@ -564,7 +564,7 @@ export type ProjectScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
 }
 
-export type ProjectCreateManyPortfolioInput = {
+export type ProjectCreateManyUserInput = {
   id?: string
   title: string
   shortDescription: string
@@ -577,7 +577,7 @@ export type ProjectCreateManyPortfolioInput = {
   updatedAt?: Date | string
 }
 
-export type ProjectUpdateWithoutPortfolioInput = {
+export type ProjectUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
@@ -590,7 +590,7 @@ export type ProjectUpdateWithoutPortfolioInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ProjectUncheckedUpdateWithoutPortfolioInput = {
+export type ProjectUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
@@ -603,7 +603,7 @@ export type ProjectUncheckedUpdateWithoutPortfolioInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ProjectUncheckedUpdateManyWithoutPortfolioInput = {
+export type ProjectUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   shortDescription?: Prisma.StringFieldUpdateOperationsInput | string
@@ -620,7 +620,7 @@ export type ProjectUncheckedUpdateManyWithoutPortfolioInput = {
 
 export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   title?: boolean
   shortDescription?: boolean
   longDescription?: boolean
@@ -630,12 +630,12 @@ export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   isFeatured?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   title?: boolean
   shortDescription?: boolean
   longDescription?: boolean
@@ -645,12 +645,12 @@ export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   isFeatured?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   title?: boolean
   shortDescription?: boolean
   longDescription?: boolean
@@ -660,12 +660,12 @@ export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   isFeatured?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectScalar = {
   id?: boolean
-  portfolioId?: boolean
+  userId?: boolean
   title?: boolean
   shortDescription?: boolean
   longDescription?: boolean
@@ -677,25 +677,25 @@ export type ProjectSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "portfolioId" | "title" | "shortDescription" | "longDescription" | "coverImageUrl" | "githubUrl" | "liveUrl" | "isFeatured" | "createdAt" | "updatedAt", ExtArgs["result"]["project"]>
+export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "title" | "shortDescription" | "longDescription" | "coverImageUrl" | "githubUrl" | "liveUrl" | "isFeatured" | "createdAt" | "updatedAt", ExtArgs["result"]["project"]>
 export type ProjectInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  portfolio?: boolean | Prisma.PortfolioDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Project"
   objects: {
-    portfolio: Prisma.$PortfolioPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    portfolioId: string
+    userId: string
     title: string
     shortDescription: string
     longDescription: string | null
@@ -1099,7 +1099,7 @@ readonly fields: ProjectFieldRefs;
  */
 export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  portfolio<T extends Prisma.PortfolioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PortfolioDefaultArgs<ExtArgs>>): Prisma.Prisma__PortfolioClient<runtime.Types.Result.GetResult<Prisma.$PortfolioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1130,7 +1130,7 @@ export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface ProjectFieldRefs {
   readonly id: Prisma.FieldRef<"Project", 'String'>
-  readonly portfolioId: Prisma.FieldRef<"Project", 'String'>
+  readonly userId: Prisma.FieldRef<"Project", 'String'>
   readonly title: Prisma.FieldRef<"Project", 'String'>
   readonly shortDescription: Prisma.FieldRef<"Project", 'String'>
   readonly longDescription: Prisma.FieldRef<"Project", 'String'>

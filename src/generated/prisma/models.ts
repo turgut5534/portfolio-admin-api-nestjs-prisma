@@ -9,9 +9,9 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/User.js'
-export type * from './models/Portfolio.js'
 export type * from './models/Profile.js'
 export type * from './models/Project.js'
 export type * from './models/Skill.js'
 export type * from './models/Experience.js'
+export type * from './models/Education.js'
 export type * from './commonInputTypes.js'
