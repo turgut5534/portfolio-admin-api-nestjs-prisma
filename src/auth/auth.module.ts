@@ -15,6 +15,6 @@ dotenv.config(); // Load .env file
   ],
   controllers: [AuthController],
   providers: [AuthService, PrismaService],
-  exports: [AuthService]
+  exports: [AuthService, JwtModule]
 })
 export class AuthModule {}

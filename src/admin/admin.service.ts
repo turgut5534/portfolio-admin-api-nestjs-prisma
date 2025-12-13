@@ -29,4 +29,21 @@ async saveAdmin(data: CreateAdminDto): Promise<User> {
       throw error;
     }
   }
+
+  async findById(userId: string) {
+    return this.prisma.user.findUnique({
+      where: { id: userId },
+      include: {
+        portfolios: {
+          include: {
+            profile: true,
+            projects: true,
+            skills: true,
+            experience: true,
+          },
+        },
+      },
+    });
+  }
+
 }
