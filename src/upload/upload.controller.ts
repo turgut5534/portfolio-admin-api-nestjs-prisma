@@ -21,9 +21,14 @@ export class UploadController {
 
   @Post('profile')
   @UseInterceptors(FileInterceptor('file', imageUploadConfig))
-  async uploadImage(@UploadedFile() file: Express.Multer.File) {
+  async uploadImage(@UploadedFile() file: Express.Multer.File, @Req() req) {
+
+    const userId = req.user.sub
+    const profile = await this.uploadService.saveProfileImage(userId, file.filename)
+
     return {
       url: this.uploadService.buildImageUrl(file.filename),
+      profile
     };
   }
 

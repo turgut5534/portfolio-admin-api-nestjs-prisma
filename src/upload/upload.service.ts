@@ -69,4 +69,31 @@ export class UploadService {
         return updatedProfile
 
     }
+
+    async saveProfileImage(userId: string, imageUrl: string) {
+
+        const profile = await this.prisma.profile.findUnique({where: {userId}})
+
+        if (!profile) throw new Error('Profile not found');
+
+        if (profile.imageUrl) {
+
+            const oldFilePath = join(process.cwd(), 'uploads/images/', profile.imageUrl);
+
+            try {
+                await fs.unlink(oldFilePath);
+            } catch (err) {
+                // File may not exist, just log the error
+                console.warn('Old image file not found:', err.message);
+            }
+        }
+
+        const updatedProfile = await this.prisma.profile.update({
+            where: { userId },
+            data: { imageUrl },
+        });
+
+        return updatedProfile
+
+    }
 }
