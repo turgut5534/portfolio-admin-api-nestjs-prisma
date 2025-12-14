@@ -47,3 +47,13 @@ export type Experience = Prisma.ExperienceModel
  * 
  */
 export type Education = Prisma.EducationModel
+/**
+ * Model Title
+ * 
+ */
+export type Title = Prisma.TitleModel
+/**
+ * Model ProjectFiles
+ * 
+ */
+export type ProjectFiles = Prisma.ProjectFilesModel

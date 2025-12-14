@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post, UseGuards, Req, Param, Patch, ForbiddenExc
 import { PortfolioService } from './portfolio.service';
 import { JwtAuthGuard } from 'src/middlewares/jwt-guard';
 import { CreateProfileDto } from './dto/create-profile.dto';
-import { Education, Experience, Profile, Project, Skill } from 'src/generated/prisma/client';
+import { Education, Experience, Profile, Project, Skill, Title } from 'src/generated/prisma/client';
 import { CreateSkillDto } from './dto/create-skill.dto';
 import { CreateExperienceDto } from './dto/create-experience.dto';
 import { CreateEducationDto } from './dto/create-education.dto';
@@ -12,6 +12,8 @@ import { UpdateSkillDto } from './dto/update-skill.dto';
 import { UpdateExperienceDto } from './dto/update-experience.dto';
 import { UpdateEducationDto } from './dto/update-education.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
+import { CreateTitleDto } from './dto/create-title.dto';
+import { UpdateTitleDto } from './dto/update-title.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller('portfolio')
@@ -53,6 +55,12 @@ export class PortfolioController {
     async createProject(@Body() dto: CreateProjectDto, @Req() req) : Promise<Project>{
         const userId = req.user.sub
         return this.portfolioService.saveProject(dto, userId)
+    }
+
+    @Post('titles')
+    async createTitle(@Body() dto: CreateTitleDto, @Req() req) : Promise<Title>{
+        const userId = req.user.sub
+        return this.portfolioService.saveTitle(dto, userId)
     }
 
     //UPDATES
@@ -125,6 +133,20 @@ export class PortfolioController {
         return this.portfolioService.updateProject(id, dto);
     }
 
+    @Patch('titles/:id')
+    async updateTitle(
+        @Param('id') id: string,
+        @Body() dto: UpdateTitleDto,
+        @Req() req
+    ): Promise<Title> {
+        const userId = req.user.sub;
+        const title = await this.portfolioService.findTitleById(id);
+
+        if (title.userId !== userId) throw new ForbiddenException('You cannot update this project');
+
+        return this.portfolioService.updateTitle(id, dto);
+    }
+
     //DELETIONS
     @Delete('profiles/:id')
     async deleteProfile(@Param('id') id: string, @Req() req) {
@@ -156,5 +178,11 @@ export class PortfolioController {
     async deleteProject(@Param('id') id: string, @Req() req) {
         const userId= req.user.sub
         return this.portfolioService.deleteProject(id, userId)
+    }
+
+    @Delete('titles/:id')
+    async deleteTitle(@Param('id') id: string, @Req() req) {
+        const userId= req.user.sub
+        return this.portfolioService.deleteTitle(id, userId)
     }
 }

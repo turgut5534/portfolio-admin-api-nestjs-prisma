@@ -24,6 +24,7 @@ model User {
   educations Education[]
   projects Project[]
   skills Skill[]
+  titles Title[]
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
 }
@@ -37,7 +38,9 @@ model Profile {
   bio          String
   location     String?
   email        String?
+  imageUrl     String?
   phone        String?
+  degree       String?
   githubUrl    String?
   linkedinUrl  String?
   websiteUrl   String?
@@ -60,6 +63,7 @@ model Project {
   isFeatured          Boolean    @default(false)
   createdAt           DateTime   @default(now())
   updatedAt           DateTime   @updatedAt
+  files ProjectFiles[]
 }
 
 model Skill {
@@ -90,8 +94,27 @@ model Education {
   user        User          @relation(fields: [userId], references: [id])
   educationName  String
   description  String?
+  degree       String?
   startDate    DateTime
   endDate      DateTime?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model Title {
+  id      String      @id @default(uuid())
+  title   String
+  userId             String
+  user        User          @relation(fields: [userId], references: [id])
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model ProjectFiles {
+  id      String      @id @default(uuid())
+  url          String
+  projectId             String
+  project        Project          @relation(fields: [projectId], references: [id])
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
 }

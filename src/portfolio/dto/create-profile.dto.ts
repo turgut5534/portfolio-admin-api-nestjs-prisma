@@ -15,6 +15,14 @@ export class CreateProfileDto {
   location?: string;
 
   @IsOptional()
+  @IsString()
+  degree?: string
+
+  @IsOptional()
+  @IsString()
+  imageUrl?: string
+
+  @IsOptional()
   @IsEmail()
   email?: string;
 

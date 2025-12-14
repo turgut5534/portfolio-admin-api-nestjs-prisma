@@ -19,6 +19,7 @@ export class AppService {
       educations: true,
       experiences: true,
       projects: true,
+      titles: true
     },
   });
   }

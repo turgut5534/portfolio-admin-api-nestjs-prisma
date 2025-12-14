@@ -1,7 +1,7 @@
 import { Injectable, ForbiddenException} from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { CreateProfileDto } from './dto/create-profile.dto';
-import { Education, Experience, Profile, Project, Skill } from 'src/generated/prisma/client';
+import { Education, Experience, Profile, Project, Skill, Title } from 'src/generated/prisma/client';
 import { CreateSkillDto } from './dto/create-skill.dto';
 import { CreateExperienceDto } from './dto/create-experience.dto';
 import { CreateEducationDto } from './dto/create-education.dto';
@@ -11,8 +11,8 @@ import { UpdateSkillDto } from './dto/update-skill.dto';
 import { UpdateExperienceDto } from './dto/update-experience.dto';
 import { UpdateEducationDto } from './dto/update-education.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
-import { join } from 'path';
-import { promises as fs } from 'fs';
+import { CreateTitleDto } from './dto/create-title.dto';
+import { UpdateTitleDto } from './dto/update-title.dto';
 
 @Injectable()
 export class PortfolioService {
@@ -74,6 +74,17 @@ export class PortfolioService {
 
         return profile
     }
+    
+    async findTitleById(id: string): Promise<Title>{
+
+        const title = await this.prisma.title.findUniqueOrThrow({
+            where: {
+                id
+            }
+        })
+
+        return title
+    }
 
     // CREATING
     async saveProfile(data:CreateProfileDto, userId: string): Promise<Profile> {
@@ -131,6 +142,17 @@ export class PortfolioService {
         
     }
 
+    async saveTitle(data:CreateTitleDto, userId: string): Promise<Title> {
+
+        return this.prisma.title.create({
+            data: {
+                ...data,
+                userId
+            }
+        })
+        
+    }
+
     //UPDATING
     async updateProfile(id: string, dto: UpdateProfileDto) {
         return this.prisma.profile.update({
@@ -164,6 +186,13 @@ export class PortfolioService {
     
     async updateProject(id: string, dto: UpdateProjectDto) {
         return this.prisma.project.update({
+            where: { id },
+            data: dto, 
+        });
+    }
+
+    async updateTitle(id: string, dto: UpdateTitleDto) {
+        return this.prisma.title.update({
             where: { id },
             data: dto, 
         });
@@ -237,32 +266,17 @@ export class PortfolioService {
         return this.prisma.project.delete({where: {id}})
     }
 
-    async saveCvFile(userId: string, cvUrl: string) {
+    async deleteTitle(id: string, userId: string) {
 
-        const profile = await this.prisma.profile.findUnique({
-        where: { userId },
-        });
+        const title = await this.prisma.title.findUnique({where: {
+            id
+        }})
 
-        if (!profile) throw new Error('Profile not found');
-
-        if (profile.cvUrl) {
-
-            const oldFilePath = join(process.cwd(), 'uploads/cv/', profile.cvUrl);
-
-            try {
-                await fs.unlink(oldFilePath);
-            } catch (err) {
-                // File may not exist, just log the error
-                console.warn('Old CV file not found:', err.message);
-            }
+        if(!title || title.userId !== userId) {
+            throw new ForbiddenException('You cannot delete this project');
         }
 
-        const updatedProfile = await this.prisma.profile.update({
-            where: { userId },
-            data: { cvUrl },
-        });
-   
-        return updatedProfile
-
+        return this.prisma.title.delete({where: {id}})
     }
+
 }

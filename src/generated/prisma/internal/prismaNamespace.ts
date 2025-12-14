@@ -389,7 +389,9 @@ export const ModelName = {
   Project: 'Project',
   Skill: 'Skill',
   Experience: 'Experience',
-  Education: 'Education'
+  Education: 'Education',
+  Title: 'Title',
+  ProjectFiles: 'ProjectFiles'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -405,7 +407,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "profile" | "project" | "skill" | "experience" | "education"
+    modelProps: "user" | "profile" | "project" | "skill" | "experience" | "education" | "title" | "projectFiles"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -853,6 +855,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Title: {
+      payload: Prisma.$TitlePayload<ExtArgs>
+      fields: Prisma.TitleFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TitleFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TitlePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TitleFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TitlePayload>
+        }
+        findFirst: {
+          args: Prisma.TitleFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TitlePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TitleFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TitlePayload>
+        }
+        findMany: {
+          args: Prisma.TitleFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TitlePayload>[]
+        }
+        create: {
+          args: Prisma.TitleCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TitlePayload>
+        }
+        createMany: {
+          args: Prisma.TitleCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TitleCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TitlePayload>[]
+        }
+        delete: {
+          args: Prisma.TitleDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TitlePayload>
+        }
+        update: {
+          args: Prisma.TitleUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TitlePayload>
+        }
+        deleteMany: {
+          args: Prisma.TitleDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TitleUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TitleUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TitlePayload>[]
+        }
+        upsert: {
+          args: Prisma.TitleUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TitlePayload>
+        }
+        aggregate: {
+          args: Prisma.TitleAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTitle>
+        }
+        groupBy: {
+          args: Prisma.TitleGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TitleGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TitleCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TitleCountAggregateOutputType> | number
+        }
+      }
+    }
+    ProjectFiles: {
+      payload: Prisma.$ProjectFilesPayload<ExtArgs>
+      fields: Prisma.ProjectFilesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ProjectFilesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectFilesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ProjectFilesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectFilesPayload>
+        }
+        findFirst: {
+          args: Prisma.ProjectFilesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectFilesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ProjectFilesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectFilesPayload>
+        }
+        findMany: {
+          args: Prisma.ProjectFilesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectFilesPayload>[]
+        }
+        create: {
+          args: Prisma.ProjectFilesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectFilesPayload>
+        }
+        createMany: {
+          args: Prisma.ProjectFilesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ProjectFilesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectFilesPayload>[]
+        }
+        delete: {
+          args: Prisma.ProjectFilesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectFilesPayload>
+        }
+        update: {
+          args: Prisma.ProjectFilesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectFilesPayload>
+        }
+        deleteMany: {
+          args: Prisma.ProjectFilesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ProjectFilesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ProjectFilesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectFilesPayload>[]
+        }
+        upsert: {
+          args: Prisma.ProjectFilesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectFilesPayload>
+        }
+        aggregate: {
+          args: Prisma.ProjectFilesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProjectFiles>
+        }
+        groupBy: {
+          args: Prisma.ProjectFilesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProjectFilesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ProjectFilesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProjectFilesCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -912,7 +1062,9 @@ export const ProfileScalarFieldEnum = {
   bio: 'bio',
   location: 'location',
   email: 'email',
+  imageUrl: 'imageUrl',
   phone: 'phone',
+  degree: 'degree',
   githubUrl: 'githubUrl',
   linkedinUrl: 'linkedinUrl',
   websiteUrl: 'websiteUrl',
@@ -972,6 +1124,7 @@ export const EducationScalarFieldEnum = {
   userId: 'userId',
   educationName: 'educationName',
   description: 'description',
+  degree: 'degree',
   startDate: 'startDate',
   endDate: 'endDate',
   createdAt: 'createdAt',
@@ -979,6 +1132,28 @@ export const EducationScalarFieldEnum = {
 } as const
 
 export type EducationScalarFieldEnum = (typeof EducationScalarFieldEnum)[keyof typeof EducationScalarFieldEnum]
+
+
+export const TitleScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TitleScalarFieldEnum = (typeof TitleScalarFieldEnum)[keyof typeof TitleScalarFieldEnum]
+
+
+export const ProjectFilesScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  projectId: 'projectId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProjectFilesScalarFieldEnum = (typeof ProjectFilesScalarFieldEnum)[keyof typeof ProjectFilesScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1160,6 +1335,8 @@ export type GlobalOmitConfig = {
   skill?: Prisma.SkillOmit
   experience?: Prisma.ExperienceOmit
   education?: Prisma.EducationOmit
+  title?: Prisma.TitleOmit
+  projectFiles?: Prisma.ProjectFilesOmit
 }
 
 /* Types for Logging */

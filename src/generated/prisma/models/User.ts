@@ -195,6 +195,7 @@ export type UserWhereInput = {
   educations?: Prisma.EducationListRelationFilter
   projects?: Prisma.ProjectListRelationFilter
   skills?: Prisma.SkillListRelationFilter
+  titles?: Prisma.TitleListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -209,6 +210,7 @@ export type UserOrderByWithRelationInput = {
   educations?: Prisma.EducationOrderByRelationAggregateInput
   projects?: Prisma.ProjectOrderByRelationAggregateInput
   skills?: Prisma.SkillOrderByRelationAggregateInput
+  titles?: Prisma.TitleOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -226,6 +228,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   educations?: Prisma.EducationListRelationFilter
   projects?: Prisma.ProjectListRelationFilter
   skills?: Prisma.SkillListRelationFilter
+  titles?: Prisma.TitleListRelationFilter
 }, "id" | "email" | "domain">
 
 export type UserOrderByWithAggregationInput = {
@@ -264,6 +267,7 @@ export type UserCreateInput = {
   educations?: Prisma.EducationCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -278,6 +282,7 @@ export type UserUncheckedCreateInput = {
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -292,6 +297,7 @@ export type UserUpdateInput = {
   educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -306,6 +312,7 @@ export type UserUncheckedUpdateInput = {
   educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -449,6 +456,20 @@ export type UserUpdateOneRequiredWithoutEducationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutEducationsInput, Prisma.UserUpdateWithoutEducationsInput>, Prisma.UserUncheckedUpdateWithoutEducationsInput>
 }
 
+export type UserCreateNestedOneWithoutTitlesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTitlesInput, Prisma.UserUncheckedCreateWithoutTitlesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTitlesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutTitlesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTitlesInput, Prisma.UserUncheckedCreateWithoutTitlesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTitlesInput
+  upsert?: Prisma.UserUpsertWithoutTitlesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTitlesInput, Prisma.UserUpdateWithoutTitlesInput>, Prisma.UserUncheckedUpdateWithoutTitlesInput>
+}
+
 export type UserCreateWithoutProfileInput = {
   id?: string
   email: string
@@ -460,6 +481,7 @@ export type UserCreateWithoutProfileInput = {
   educations?: Prisma.EducationCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -473,6 +495,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -502,6 +525,7 @@ export type UserUpdateWithoutProfileInput = {
   educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -515,6 +539,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProjectsInput = {
@@ -528,6 +553,7 @@ export type UserCreateWithoutProjectsInput = {
   experiences?: Prisma.ExperienceCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProjectsInput = {
@@ -541,6 +567,7 @@ export type UserUncheckedCreateWithoutProjectsInput = {
   experiences?: Prisma.ExperienceUncheckedCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProjectsInput = {
@@ -570,6 +597,7 @@ export type UserUpdateWithoutProjectsInput = {
   experiences?: Prisma.ExperienceUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProjectsInput = {
@@ -583,6 +611,7 @@ export type UserUncheckedUpdateWithoutProjectsInput = {
   experiences?: Prisma.ExperienceUncheckedUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSkillsInput = {
@@ -596,6 +625,7 @@ export type UserCreateWithoutSkillsInput = {
   experiences?: Prisma.ExperienceCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSkillsInput = {
@@ -609,6 +639,7 @@ export type UserUncheckedCreateWithoutSkillsInput = {
   experiences?: Prisma.ExperienceUncheckedCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSkillsInput = {
@@ -638,6 +669,7 @@ export type UserUpdateWithoutSkillsInput = {
   experiences?: Prisma.ExperienceUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSkillsInput = {
@@ -651,6 +683,7 @@ export type UserUncheckedUpdateWithoutSkillsInput = {
   experiences?: Prisma.ExperienceUncheckedUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutExperiencesInput = {
@@ -664,6 +697,7 @@ export type UserCreateWithoutExperiencesInput = {
   educations?: Prisma.EducationCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutExperiencesInput = {
@@ -677,6 +711,7 @@ export type UserUncheckedCreateWithoutExperiencesInput = {
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutExperiencesInput = {
@@ -706,6 +741,7 @@ export type UserUpdateWithoutExperiencesInput = {
   educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutExperiencesInput = {
@@ -719,6 +755,7 @@ export type UserUncheckedUpdateWithoutExperiencesInput = {
   educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEducationsInput = {
@@ -732,6 +769,7 @@ export type UserCreateWithoutEducationsInput = {
   experiences?: Prisma.ExperienceCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEducationsInput = {
@@ -745,6 +783,7 @@ export type UserUncheckedCreateWithoutEducationsInput = {
   experiences?: Prisma.ExperienceUncheckedCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEducationsInput = {
@@ -774,6 +813,7 @@ export type UserUpdateWithoutEducationsInput = {
   experiences?: Prisma.ExperienceUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEducationsInput = {
@@ -785,6 +825,79 @@ export type UserUncheckedUpdateWithoutEducationsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutTitlesInput = {
+  id?: string
+  email: string
+  password: string
+  domain?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  experiences?: Prisma.ExperienceCreateNestedManyWithoutUserInput
+  educations?: Prisma.EducationCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  skills?: Prisma.SkillCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutTitlesInput = {
+  id?: string
+  email: string
+  password: string
+  domain?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  experiences?: Prisma.ExperienceUncheckedCreateNestedManyWithoutUserInput
+  educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutTitlesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTitlesInput, Prisma.UserUncheckedCreateWithoutTitlesInput>
+}
+
+export type UserUpsertWithoutTitlesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTitlesInput, Prisma.UserUncheckedUpdateWithoutTitlesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTitlesInput, Prisma.UserUncheckedCreateWithoutTitlesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTitlesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTitlesInput, Prisma.UserUncheckedUpdateWithoutTitlesInput>
+}
+
+export type UserUpdateWithoutTitlesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  domain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  experiences?: Prisma.ExperienceUpdateManyWithoutUserNestedInput
+  educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  skills?: Prisma.SkillUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTitlesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  domain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  experiences?: Prisma.ExperienceUncheckedUpdateManyWithoutUserNestedInput
+  educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -799,6 +912,7 @@ export type UserCountOutputType = {
   educations: number
   projects: number
   skills: number
+  titles: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -806,6 +920,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   educations?: boolean | UserCountOutputTypeCountEducationsArgs
   projects?: boolean | UserCountOutputTypeCountProjectsArgs
   skills?: boolean | UserCountOutputTypeCountSkillsArgs
+  titles?: boolean | UserCountOutputTypeCountTitlesArgs
 }
 
 /**
@@ -846,6 +961,13 @@ export type UserCountOutputTypeCountSkillsArgs<ExtArgs extends runtime.Types.Ext
   where?: Prisma.SkillWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTitlesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TitleWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -859,6 +981,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   educations?: boolean | Prisma.User$educationsArgs<ExtArgs>
   projects?: boolean | Prisma.User$projectsArgs<ExtArgs>
   skills?: boolean | Prisma.User$skillsArgs<ExtArgs>
+  titles?: boolean | Prisma.User$titlesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -896,6 +1019,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   educations?: boolean | Prisma.User$educationsArgs<ExtArgs>
   projects?: boolean | Prisma.User$projectsArgs<ExtArgs>
   skills?: boolean | Prisma.User$skillsArgs<ExtArgs>
+  titles?: boolean | Prisma.User$titlesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -909,6 +1033,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     educations: Prisma.$EducationPayload<ExtArgs>[]
     projects: Prisma.$ProjectPayload<ExtArgs>[]
     skills: Prisma.$SkillPayload<ExtArgs>[]
+    titles: Prisma.$TitlePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1316,6 +1441,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   educations<T extends Prisma.User$educationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$educationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EducationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   projects<T extends Prisma.User$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   skills<T extends Prisma.User$skillsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$skillsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  titles<T extends Prisma.User$titlesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$titlesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1851,6 +1977,30 @@ export type User$skillsArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   distinct?: Prisma.SkillScalarFieldEnum | Prisma.SkillScalarFieldEnum[]
+}
+
+/**
+ * User.titles
+ */
+export type User$titlesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Title
+   */
+  select?: Prisma.TitleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Title
+   */
+  omit?: Prisma.TitleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TitleInclude<ExtArgs> | null
+  where?: Prisma.TitleWhereInput
+  orderBy?: Prisma.TitleOrderByWithRelationInput | Prisma.TitleOrderByWithRelationInput[]
+  cursor?: Prisma.TitleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TitleScalarFieldEnum | Prisma.TitleScalarFieldEnum[]
 }
 
 /**

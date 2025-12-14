@@ -8,6 +8,10 @@ export class CreateEducationDto {
   @IsString()
   description?: string;
 
+  @IsString()
+  @IsOptional()
+  degree: string;
+
   @IsDateString()
   startDate: string;
 

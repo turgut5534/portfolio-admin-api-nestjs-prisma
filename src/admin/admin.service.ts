@@ -38,7 +38,8 @@ export class AdminService {
             skills: true,
             educations: true,
             experiences: true,
-            projects: true
+            projects: true,
+            titles: true
           },
         });
       }

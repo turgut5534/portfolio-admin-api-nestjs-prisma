@@ -11,17 +11,15 @@ import { JwtAuthGuard } from 'src/middlewares/jwt-guard';
 import { UploadService } from './upload.service';
 import { imageUploadConfig } from './upload-image.config';
 import { cvUploadConfig } from './upload-file.config';
-import { PortfolioService } from 'src/portfolio/portfolio.service';
 
 @UseGuards(JwtAuthGuard)
 @Controller('upload')
 export class UploadController {
     constructor(
     private readonly uploadService: UploadService,
-    private readonly portfolioService: PortfolioService, // <- inject here
   ) {}
 
-  @Post('image')
+  @Post('profile')
   @UseInterceptors(FileInterceptor('file', imageUploadConfig))
   async uploadImage(@UploadedFile() file: Express.Multer.File) {
     return {
@@ -35,7 +33,7 @@ export class UploadController {
 
     const userId = req.user.sub
 
-    const profile = await this.portfolioService.saveCvFile(userId, file.filename)
+    const profile = await this.uploadService.saveCvFile(userId, file.filename)
 
     return {
       url: this.uploadService.buildCvUrl(file.filename),

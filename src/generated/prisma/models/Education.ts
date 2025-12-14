@@ -29,6 +29,7 @@ export type EducationMinAggregateOutputType = {
   userId: string | null
   educationName: string | null
   description: string | null
+  degree: string | null
   startDate: Date | null
   endDate: Date | null
   createdAt: Date | null
@@ -40,6 +41,7 @@ export type EducationMaxAggregateOutputType = {
   userId: string | null
   educationName: string | null
   description: string | null
+  degree: string | null
   startDate: Date | null
   endDate: Date | null
   createdAt: Date | null
@@ -51,6 +53,7 @@ export type EducationCountAggregateOutputType = {
   userId: number
   educationName: number
   description: number
+  degree: number
   startDate: number
   endDate: number
   createdAt: number
@@ -64,6 +67,7 @@ export type EducationMinAggregateInputType = {
   userId?: true
   educationName?: true
   description?: true
+  degree?: true
   startDate?: true
   endDate?: true
   createdAt?: true
@@ -75,6 +79,7 @@ export type EducationMaxAggregateInputType = {
   userId?: true
   educationName?: true
   description?: true
+  degree?: true
   startDate?: true
   endDate?: true
   createdAt?: true
@@ -86,6 +91,7 @@ export type EducationCountAggregateInputType = {
   userId?: true
   educationName?: true
   description?: true
+  degree?: true
   startDate?: true
   endDate?: true
   createdAt?: true
@@ -170,6 +176,7 @@ export type EducationGroupByOutputType = {
   userId: string
   educationName: string
   description: string | null
+  degree: string | null
   startDate: Date
   endDate: Date | null
   createdAt: Date
@@ -202,6 +209,7 @@ export type EducationWhereInput = {
   userId?: Prisma.StringFilter<"Education"> | string
   educationName?: Prisma.StringFilter<"Education"> | string
   description?: Prisma.StringNullableFilter<"Education"> | string | null
+  degree?: Prisma.StringNullableFilter<"Education"> | string | null
   startDate?: Prisma.DateTimeFilter<"Education"> | Date | string
   endDate?: Prisma.DateTimeNullableFilter<"Education"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Education"> | Date | string
@@ -214,6 +222,7 @@ export type EducationOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   educationName?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  degree?: Prisma.SortOrderInput | Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -229,6 +238,7 @@ export type EducationWhereUniqueInput = Prisma.AtLeast<{
   userId?: Prisma.StringFilter<"Education"> | string
   educationName?: Prisma.StringFilter<"Education"> | string
   description?: Prisma.StringNullableFilter<"Education"> | string | null
+  degree?: Prisma.StringNullableFilter<"Education"> | string | null
   startDate?: Prisma.DateTimeFilter<"Education"> | Date | string
   endDate?: Prisma.DateTimeNullableFilter<"Education"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Education"> | Date | string
@@ -241,6 +251,7 @@ export type EducationOrderByWithAggregationInput = {
   userId?: Prisma.SortOrder
   educationName?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  degree?: Prisma.SortOrderInput | Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -258,6 +269,7 @@ export type EducationScalarWhereWithAggregatesInput = {
   userId?: Prisma.StringWithAggregatesFilter<"Education"> | string
   educationName?: Prisma.StringWithAggregatesFilter<"Education"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"Education"> | string | null
+  degree?: Prisma.StringNullableWithAggregatesFilter<"Education"> | string | null
   startDate?: Prisma.DateTimeWithAggregatesFilter<"Education"> | Date | string
   endDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Education"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Education"> | Date | string
@@ -268,6 +280,7 @@ export type EducationCreateInput = {
   id?: string
   educationName: string
   description?: string | null
+  degree?: string | null
   startDate: Date | string
   endDate?: Date | string | null
   createdAt?: Date | string
@@ -280,6 +293,7 @@ export type EducationUncheckedCreateInput = {
   userId: string
   educationName: string
   description?: string | null
+  degree?: string | null
   startDate: Date | string
   endDate?: Date | string | null
   createdAt?: Date | string
@@ -290,6 +304,7 @@ export type EducationUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   educationName?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -302,6 +317,7 @@ export type EducationUncheckedUpdateInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   educationName?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -313,6 +329,7 @@ export type EducationCreateManyInput = {
   userId: string
   educationName: string
   description?: string | null
+  degree?: string | null
   startDate: Date | string
   endDate?: Date | string | null
   createdAt?: Date | string
@@ -323,6 +340,7 @@ export type EducationUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   educationName?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -334,6 +352,7 @@ export type EducationUncheckedUpdateManyInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   educationName?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -355,6 +374,7 @@ export type EducationCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   educationName?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  degree?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -366,6 +386,7 @@ export type EducationMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   educationName?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  degree?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -377,6 +398,7 @@ export type EducationMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   educationName?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  degree?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -429,6 +451,7 @@ export type EducationCreateWithoutUserInput = {
   id?: string
   educationName: string
   description?: string | null
+  degree?: string | null
   startDate: Date | string
   endDate?: Date | string | null
   createdAt?: Date | string
@@ -439,6 +462,7 @@ export type EducationUncheckedCreateWithoutUserInput = {
   id?: string
   educationName: string
   description?: string | null
+  degree?: string | null
   startDate: Date | string
   endDate?: Date | string | null
   createdAt?: Date | string
@@ -479,6 +503,7 @@ export type EducationScalarWhereInput = {
   userId?: Prisma.StringFilter<"Education"> | string
   educationName?: Prisma.StringFilter<"Education"> | string
   description?: Prisma.StringNullableFilter<"Education"> | string | null
+  degree?: Prisma.StringNullableFilter<"Education"> | string | null
   startDate?: Prisma.DateTimeFilter<"Education"> | Date | string
   endDate?: Prisma.DateTimeNullableFilter<"Education"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Education"> | Date | string
@@ -489,6 +514,7 @@ export type EducationCreateManyUserInput = {
   id?: string
   educationName: string
   description?: string | null
+  degree?: string | null
   startDate: Date | string
   endDate?: Date | string | null
   createdAt?: Date | string
@@ -499,6 +525,7 @@ export type EducationUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   educationName?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -509,6 +536,7 @@ export type EducationUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   educationName?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -519,6 +547,7 @@ export type EducationUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   educationName?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -532,6 +561,7 @@ export type EducationSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   userId?: boolean
   educationName?: boolean
   description?: boolean
+  degree?: boolean
   startDate?: boolean
   endDate?: boolean
   createdAt?: boolean
@@ -544,6 +574,7 @@ export type EducationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   userId?: boolean
   educationName?: boolean
   description?: boolean
+  degree?: boolean
   startDate?: boolean
   endDate?: boolean
   createdAt?: boolean
@@ -556,6 +587,7 @@ export type EducationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   userId?: boolean
   educationName?: boolean
   description?: boolean
+  degree?: boolean
   startDate?: boolean
   endDate?: boolean
   createdAt?: boolean
@@ -568,13 +600,14 @@ export type EducationSelectScalar = {
   userId?: boolean
   educationName?: boolean
   description?: boolean
+  degree?: boolean
   startDate?: boolean
   endDate?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type EducationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "educationName" | "description" | "startDate" | "endDate" | "createdAt" | "updatedAt", ExtArgs["result"]["education"]>
+export type EducationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "educationName" | "description" | "degree" | "startDate" | "endDate" | "createdAt" | "updatedAt", ExtArgs["result"]["education"]>
 export type EducationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -595,6 +628,7 @@ export type $EducationPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     userId: string
     educationName: string
     description: string | null
+    degree: string | null
     startDate: Date
     endDate: Date | null
     createdAt: Date
@@ -1027,6 +1061,7 @@ export interface EducationFieldRefs {
   readonly userId: Prisma.FieldRef<"Education", 'String'>
   readonly educationName: Prisma.FieldRef<"Education", 'String'>
   readonly description: Prisma.FieldRef<"Education", 'String'>
+  readonly degree: Prisma.FieldRef<"Education", 'String'>
   readonly startDate: Prisma.FieldRef<"Education", 'DateTime'>
   readonly endDate: Prisma.FieldRef<"Education", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Education", 'DateTime'>

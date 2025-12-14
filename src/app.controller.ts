@@ -8,6 +8,6 @@ export class AppController {
 
   @Get('info')
   async getInfo(@Req() req: Request) {
-    return this.appService.getInfo(req.hostname);
+    return this.appService.getInfo('turgutsalgin.com');
   }
 }
