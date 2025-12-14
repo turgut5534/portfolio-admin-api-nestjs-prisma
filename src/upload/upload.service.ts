@@ -96,4 +96,22 @@ export class UploadService {
         return updatedProfile
 
     }
+
+
+      async saveProjectFile(userId: string, id: string, fileUrl: string) {
+
+        const project = await this.prisma.project.findUnique({where: {id}})
+
+        if (!project) throw new Error('Project not found');
+
+        const newProjectFile = await this.prisma.projectFiles.create({
+          data: {
+              url: fileUrl,
+              projectId: project.id
+          }
+        });
+
+        return newProjectFile
+
+    }
 }

@@ -1,7 +1,7 @@
 import { Injectable, ForbiddenException} from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { CreateProfileDto } from './dto/create-profile.dto';
-import { Education, Experience, Profile, Project, Skill, Title } from 'src/generated/prisma/client';
+import { Education, Experience, Profile, Project, ProjectFiles, Skill, Title } from 'src/generated/prisma/client';
 import { CreateSkillDto } from './dto/create-skill.dto';
 import { CreateExperienceDto } from './dto/create-experience.dto';
 import { CreateEducationDto } from './dto/create-education.dto';
@@ -13,6 +13,8 @@ import { UpdateEducationDto } from './dto/update-education.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { CreateTitleDto } from './dto/create-title.dto';
 import { UpdateTitleDto } from './dto/update-title.dto';
+import { join } from 'path';
+import { promises as fs } from 'fs';
 
 @Injectable()
 export class PortfolioService {
@@ -84,6 +86,78 @@ export class PortfolioService {
         })
 
         return title
+    }
+
+    //FIND MULTIPLE
+
+    async getProfile(userId): Promise<Profile | null> {
+
+        return this.prisma.profile.findUnique({
+            where: {
+                userId
+            }
+        })
+
+    }
+
+    async getSkills(userId): Promise<Skill[]> {
+
+        return this.prisma.skill.findMany({
+            where: {
+                userId
+            }
+        })
+
+    }
+
+    async getEducations(userId): Promise<Education[]> {
+
+        return this.prisma.education.findMany({
+            where: {
+                userId
+            }
+        })
+
+    }
+
+    async getProjects(userId): Promise<Project[]> {
+
+        return this.prisma.project.findMany({
+            where: {
+                userId
+            }
+        })
+
+    }
+
+    async getTitles(userId): Promise<Title[]> {
+
+        return this.prisma.title.findMany({
+            where: {
+                userId
+            }
+        })
+
+    }
+
+    async getProjectFiles(userId: string, projectId: string): Promise<ProjectFiles[]> {
+
+        const project= await this.prisma.project.findFirst({
+            where: {
+                userId
+            }
+        })
+
+        if(!project) {
+            throw new Error('Project not found');
+        }
+
+        return this.prisma.projectFiles.findMany({
+            where: {
+                projectId
+            }
+        })
+
     }
 
     // CREATING
@@ -277,6 +351,39 @@ export class PortfolioService {
         }
 
         return this.prisma.title.delete({where: {id}})
+    }
+
+    async deleteProjectFile(fileId: string, userId: string) {
+
+        const projectFile = await this.prisma.projectFiles.findFirst({where: {
+            id : fileId,
+            project: {
+                userId
+            }
+        },
+        include: {
+            project: true
+        }
+        })
+
+        if (!projectFile) {
+            throw new Error('Project file not found or does not belong to the user');
+        }
+
+
+        const oldFilePath = join(process.cwd(), 'uploads/images/', projectFile.url);
+
+        try {
+            await fs.unlink(oldFilePath);
+        } catch (err) {
+            console.warn('Old image file not found:', err.message);
+        }
+        
+
+        return this.prisma.projectFiles.delete({
+            where: { id: fileId }
+        });
+        
     }
 
 }

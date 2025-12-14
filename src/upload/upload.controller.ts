@@ -4,7 +4,8 @@ import {
   UseGuards,
   UseInterceptors,
   UploadedFile,
-  Req
+  Req,
+  Param
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { JwtAuthGuard } from 'src/middlewares/jwt-guard';
@@ -43,6 +44,20 @@ export class UploadController {
     return {
       url: this.uploadService.buildCvUrl(file.filename),
       profile
+    };
+  }
+
+  @Post('projects/:id')
+  @UseInterceptors(FileInterceptor('file', imageUploadConfig))
+  async uploadProjectFile(@UploadedFile() file: Express.Multer.File, @Param('id') id ,@Req() req) {
+
+    const userId = req.user.sub
+
+    const projectFile = await this.uploadService.saveProjectFile(userId, id, file.filename)
+
+    return {
+      url: this.uploadService.buildImageUrl(file.filename),
+      projectFile
     };
   }
 }

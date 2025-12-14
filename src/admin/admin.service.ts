@@ -38,7 +38,11 @@ export class AdminService {
             skills: true,
             educations: true,
             experiences: true,
-            projects: true,
+            projects: {
+              include: {
+                files: true
+              }
+            },
             titles: true
           },
         });

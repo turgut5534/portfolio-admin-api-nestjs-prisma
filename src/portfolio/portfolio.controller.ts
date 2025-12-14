@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post, UseGuards, Req, Param, Patch, ForbiddenExc
 import { PortfolioService } from './portfolio.service';
 import { JwtAuthGuard } from 'src/middlewares/jwt-guard';
 import { CreateProfileDto } from './dto/create-profile.dto';
-import { Education, Experience, Profile, Project, Skill, Title } from 'src/generated/prisma/client';
+import { Education, Experience, Profile, Project, ProjectFiles, Skill, Title } from 'src/generated/prisma/client';
 import { CreateSkillDto } from './dto/create-skill.dto';
 import { CreateExperienceDto } from './dto/create-experience.dto';
 import { CreateEducationDto } from './dto/create-education.dto';
@@ -22,6 +22,62 @@ export class PortfolioController {
     constructor(
             private readonly portfolioService: PortfolioService,
     ) {}
+
+    //FIND MULTIPLE
+    @Get('profile')
+    async getProfile(@Req() req): Promise<Profile | null>{
+
+        const userId = req.user.sub
+
+        return this.portfolioService.getProfile(userId)
+
+    }
+
+    @Get('skills')
+    async getSkills(@Req() req): Promise<Skill[]>{
+
+        const userId = req.user.sub
+
+        return this.portfolioService.getSkills(userId)
+
+    }
+
+    @Get('educations')
+    async getEducations(@Req() req): Promise<Education[]>{
+
+        const userId = req.user.sub
+
+        return this.portfolioService.getEducations(userId)
+
+    }
+
+    @Get('projects')
+    async getProjects(@Req() req): Promise<Project[]>{
+
+        const userId = req.user.sub
+
+        return this.portfolioService.getProjects(userId)
+
+    }
+
+    @Get('titles')
+    async getTitles(@Req() req): Promise<Title[]>{
+
+        const userId = req.user.sub
+
+        return this.portfolioService.getTitles(userId)
+
+    }
+
+    @Get('projectfiles/:id')
+    async getProjectFiles(@Req() req, @Param('id') projectId): Promise<ProjectFiles[]>{
+
+        const userId = req.user.sub
+
+        return this.portfolioService.getProjectFiles(userId, projectId)
+
+    }
+
 
     //CREATIONS
 
@@ -184,5 +240,12 @@ export class PortfolioController {
     async deleteTitle(@Param('id') id: string, @Req() req) {
         const userId= req.user.sub
         return this.portfolioService.deleteTitle(id, userId)
+    }
+
+    @Delete('projectfile/:id')
+    async deleteProjectFile(@Param('id') fileId: string, @Req() req) {
+
+        const userId= req.user.sub
+        return this.portfolioService.deleteProjectFile(fileId, userId)
     }
 }
