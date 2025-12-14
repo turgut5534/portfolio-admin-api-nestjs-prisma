@@ -12,6 +12,14 @@ export class AdminController {
         private readonly adminService: AdminService,
   ) {}
 
+
+    @Get('all')
+    @UseGuards(ApiKeyGuard)
+    async getAllAdmins(): Promise<User[]> {
+
+        return this.adminService.getAllAdmins()
+    }
+
     @Post('save')
     @UseGuards(ApiKeyGuard)
     async saveAdmin(@Body() dto: CreateAdminDto ): Promise<User> {

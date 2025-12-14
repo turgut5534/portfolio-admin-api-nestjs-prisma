@@ -9,6 +9,12 @@ export class AdminService {
 
     constructor(private readonly prisma: PrismaService) {}
 
+    async getAllAdmins(): Promise<User []> {
+      
+      return this.prisma.user.findMany()
+
+    }
+
     async saveAdmin(data: CreateAdminDto): Promise<User> {
 
         const hashedPassword = await bcrypt.hash(data.password, 12);
