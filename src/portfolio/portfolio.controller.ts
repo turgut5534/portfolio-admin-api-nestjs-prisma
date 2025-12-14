@@ -124,6 +124,7 @@ export class PortfolioController {
     @Patch('profiles/:id')
     async updateProfile(@Param('id') id: string, @Body() dto: UpdateProfileDto, @Req() req): Promise<Profile> {
         
+        console.log('sdsf')
         const userId = req.user.sub;
         const profile = await this.portfolioService.findProfileById(id)
 

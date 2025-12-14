@@ -182,26 +182,40 @@ export class PortfolioService {
         })
         
     }
+    
+    async saveExperience(data: CreateExperienceDto, userId: string): Promise<Experience> {
+        const startDate = new Date(data.startDate); // works correctly
+        const endDate = data.endDate ? new Date(data.endDate) : null;
 
-    async saveExperience(data:CreateExperienceDto, userId: string): Promise<Experience> {
 
         return this.prisma.experience.create({
             data: {
-                ...data,
+                companyName: data.companyName,
+                position: data.position,
+                description: data.description,
+                startDate,
+                endDate,
                 userId
             }
-        })
-        
+        });
     }
+
 
     async saveEducation(data:CreateEducationDto, userId: string): Promise<Education> {
 
+        const startDate = new Date(data.startDate); // works correctly
+        const endDate = data.endDate ? new Date(data.endDate) : null;
+
         return this.prisma.education.create({
             data: {
-                ...data,
+                educationName: data.educationName,
+                description: data.description,
+                degree: data.degree,
+                startDate,
+                endDate,
                 userId
             }
-        })
+        });
         
     }
 
