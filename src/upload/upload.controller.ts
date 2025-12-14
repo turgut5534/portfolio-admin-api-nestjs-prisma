@@ -60,4 +60,19 @@ export class UploadController {
       projectFile
     };
   }
+
+
+  @Post('projects/cover/:id')
+  @UseInterceptors(FileInterceptor('file', imageUploadConfig))
+  async uploadProjectCoverImage(@UploadedFile() file: Express.Multer.File, @Param('id') id ,@Req() req) {
+
+    const userId = req.user.sub
+
+    const project = await this.uploadService.saveProjectCoverImage(userId, id, file.filename)
+
+    return {
+      url: this.uploadService.buildImageUrl(file.filename),
+      project
+    };
+  }
 }

@@ -114,4 +114,31 @@ export class UploadService {
         return newProjectFile
 
     }
+
+       async saveProjectCoverImage(userId: string, id: string, fileUrl: string) {
+
+        const project = await this.prisma.project.findUnique({where: {id ,userId}})
+
+        if (!project) throw new Error('Project not found');
+
+        if (project.coverImageUrl) {
+
+            const oldFilePath = join(process.cwd(), 'uploads/images/', project.coverImageUrl);
+
+            try {
+                await fs.unlink(oldFilePath);
+            } catch (err) {
+                // File may not exist, just log the error
+                console.warn('Old image file not found:', err.message);
+            }
+        }
+
+        const updatedProject = await this.prisma.project.update({
+          where: { id },
+          data: { coverImageUrl: fileUrl }
+      });
+
+        return updatedProject
+
+    }
 }
