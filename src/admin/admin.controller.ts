@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards, Req, Delete, Param } from '@nestjs/common';
 import { AdminService } from './admin.service'
 import { User } from 'src/generated/prisma/client';
 import { ApiKeyGuard } from 'src/middlewares/api-key.guard';
@@ -17,6 +17,13 @@ export class AdminController {
     async saveAdmin(@Body() dto: CreateAdminDto ): Promise<User> {
 
         return this.adminService.saveAdmin(dto)
+    }
+
+    @Delete('delete/:id')
+    @UseGuards(ApiKeyGuard)
+    async deleteAdmin(@Param('id') id): Promise<User> {
+
+        return this.adminService.deleteAdmin(id)
     }
 
     @UseGuards(JwtAuthGuard)
