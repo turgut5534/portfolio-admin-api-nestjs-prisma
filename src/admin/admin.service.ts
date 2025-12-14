@@ -19,6 +19,7 @@ export class AdminService {
             data: {
               email: data.email,
               password: hashedPassword,
+              domain: data.domain
             },
           });
         } catch (error) {
