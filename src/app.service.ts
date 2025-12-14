@@ -10,17 +10,18 @@ export class AppService {
 
   constructor(private readonly prisma: PrismaService) {}
 
-  async getInfo(domain: string) {
-    return this.prisma.user.findUniqueOrThrow({
+async getInfo(domain: string) {
+  return this.prisma.user.findUniqueOrThrow({
     where: { domain },
-    include: {
+    select: {
       profile: true,
       skills: true,
       educations: true,
       experiences: true,
       projects: true,
-      titles: true
+      titles: true,
     },
   });
-  }
+}
+
 }
