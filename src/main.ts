@@ -5,21 +5,19 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 
 async function bootstrap() {
-  // 👇 IMPORTANT: specify NestExpressApplication
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+
+  // 👇 Serve static files from project root
+  const uploadsPath = join(process.cwd(), 'uploads');
+  app.useStaticAssets(uploadsPath, { prefix: '/uploads' });
 
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true,            // remove unknown fields
-      forbidNonWhitelisted: true, // throw error on extra fields
-      transform: true,            // auto-transform DTOs
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
     }),
   );
-
-  // 👇 Serve static files
-  app.useStaticAssets(join(__dirname, '..', 'uploads'), {
-    prefix: '/uploads',
-  });
 
   await app.listen(process.env.PORT ?? 3010);
 }

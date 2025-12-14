@@ -1,14 +1,24 @@
 // admin/dto/create-admin.dto.ts
-import { IsEmail, IsString, MinLength } from 'class-validator';
+import {
+  IsEmail,
+  IsEnum,
+  IsString,
+  MinLength,
+  IsNotEmpty,
+} from 'class-validator'
+import { UserRole } from './user-role'
 
 export class CreateAdminDto {
   @IsEmail({}, { message: 'Invalid email address' })
-  email: string;
+  email: string
 
   @IsString()
   @MinLength(12, { message: 'Password must be at least 12 characters' })
-  password: string;
+  password: string
 
-  @IsString()
+  @IsNotEmpty({ message: 'Domain is required' })
   domain: string
+
+  @IsEnum(UserRole)
+  role: UserRole
 }

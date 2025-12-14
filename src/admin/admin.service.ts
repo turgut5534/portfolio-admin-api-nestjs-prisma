@@ -11,7 +11,11 @@ export class AdminService {
 
     async getAllAdmins(): Promise<User []> {
       
-      return this.prisma.user.findMany()
+      return this.prisma.user.findMany({
+        include: {
+          profile:true
+        }
+      })
 
     }
 
@@ -31,7 +35,7 @@ export class AdminService {
         } catch (error) {
 
           if (error.code === 'P2002') {
-            throw new BadRequestException('Email already exists');
+            throw new BadRequestException('An error occurred');
           }
           throw error;
         }
