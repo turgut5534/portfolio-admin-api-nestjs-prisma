@@ -8,6 +8,9 @@ export class AppController {
 
   @Get('info')
   async getInfo(@Req() req: Request) {
-    return this.appService.getInfo('turgutsalgin.com');
+
+    const domain = req.headers['x-portfolio-domain'] as string;
+
+    return this.appService.getInfo(domain);
   }
 }
