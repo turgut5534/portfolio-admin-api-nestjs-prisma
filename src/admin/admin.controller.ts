@@ -41,4 +41,26 @@ export class AdminController {
         const user = await this.adminService.findById(userId)
         return user
   }
+
+  @Post('password')
+  @UseGuards(JwtAuthGuard)
+  async changePassword(@Req() req, @Body() body: any) {
+
+    const id = req.user.sub
+    const password = body.password
+
+    return this.adminService.changePassword(id, password)
+
+  }
+
+    @Post('password/force')
+    @UseGuards(ApiKeyGuard)
+    async changePasswordbyForce(@Body() body: any) {
+
+    const password = body.password
+    const id = body.id
+
+    return this.adminService.changePasswordbyForce(id,password)
+
+  }
 }

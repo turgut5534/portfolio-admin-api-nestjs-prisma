@@ -67,4 +67,38 @@ export class AdminService {
 
       }
 
+      async changePassword(id: string, password: string): Promise<User> {
+
+        const user = await this.prisma.user.findUnique({where: {id}})
+
+        const hashedPassword = await bcrypt.hash(password, 12);
+
+        return this.prisma.user.update({
+          where: {
+            id
+          },
+          data: {
+            password: hashedPassword
+          }
+        })
+
+      }
+
+        async changePasswordbyForce(id: string, password: string): Promise<User> {
+
+        const user = await this.prisma.user.findUnique({where: {id}})
+
+        const hashedPassword = await bcrypt.hash(password, 12);
+
+        return this.prisma.user.update({
+          where: {
+            id
+          },
+          data: {
+            password: hashedPassword
+          }
+        })
+
+      }
+
 }
