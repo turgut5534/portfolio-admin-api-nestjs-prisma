@@ -126,6 +126,9 @@ export class PortfolioService {
         return this.prisma.skill.findMany({
             where: {
                 userId
+            },
+            orderBy: {
+                createdAt: 'asc'
             }
         })
 
@@ -136,6 +139,9 @@ export class PortfolioService {
         return this.prisma.education.findMany({
             where: {
                 userId
+            },
+            orderBy: {
+                createdAt: 'asc'
             }
         })
 
@@ -146,6 +152,9 @@ export class PortfolioService {
         return this.prisma.project.findMany({
             where: {
                 userId
+            },
+            orderBy: {
+                createdAt: 'asc'
             }
         })
 
@@ -156,6 +165,9 @@ export class PortfolioService {
         return this.prisma.title.findMany({
             where: {
                 userId
+            },
+            orderBy: {
+                createdAt: 'asc'
             }
         })
 
@@ -293,18 +305,45 @@ export class PortfolioService {
 
     async updateExperience(id: string, dto: UpdateExperienceDto) {
         return this.prisma.experience.update({
-            where: { id },
-            data: dto, 
-        });
+        where: { id },
+        data: {
+        ...dto, // update all other fields normally
+
+        startDate: dto.startDate
+            ? new Date(dto.startDate)
+            : undefined,
+
+        endDate:
+            dto.endDate === null
+            ? null
+            : dto.endDate
+            ? new Date(dto.endDate)
+            : undefined,
+        },
+    });
     }
 
     async updateEducation(id: string, dto: UpdateEducationDto) {
-        return this.prisma.education.update({
-            where: { id },
-            data: dto, 
-        });
+    return this.prisma.education.update({
+        where: { id },
+        data: {
+        ...dto, // update all other fields normally
+
+        startDate: dto.startDate
+            ? new Date(dto.startDate)
+            : undefined,
+
+        endDate:
+            dto.endDate === null
+            ? null
+            : dto.endDate
+            ? new Date(dto.endDate)
+            : undefined,
+        },
+    });
     }
-    
+
+        
     async updateProject(id: string, dto: UpdateProjectDto) {
         return this.prisma.project.update({
             where: { id },
@@ -392,10 +431,23 @@ export class PortfolioService {
             id
         }})
 
+        
         if(!project || project.userId !== userId) {
             throw new ForbiddenException('You cannot delete this project');
         }
+        
+        if(project?.coverImageUrl) {
+            const oldFilePath = join(process.cwd(), 'uploads/images/', project.coverImageUrl);
 
+
+            try {
+                await fs.unlink(oldFilePath);
+            } catch (err) {
+                // File may not exist, just log the error
+                console.warn('Image not found:', err.message);
+            }
+        }
+        
         return this.prisma.project.delete({where: {id}})
     }
 

@@ -23,6 +23,44 @@ export class PortfolioController {
             private readonly portfolioService: PortfolioService,
     ) {}
 
+    //FIND BY ID
+
+    @Get('skill/:id')
+    async getSkillById(@Param('id') id): Promise<Skill> {
+
+        return this.portfolioService.findSkillById(id)
+
+    }
+
+    @Get('experience/:id')
+    async getExperienceById(@Param('id') id): Promise<Experience> {
+
+        return this.portfolioService.findExperienceById(id)
+
+    }
+
+    @Get('education/:id')
+    async getEducationById(@Param('id') id): Promise<Education> {
+
+        return this.portfolioService.findEducationById(id)
+
+    }
+
+    @Get('project/:id')
+    async getProjectById(@Param('id') id): Promise<Project> {
+
+        return this.portfolioService.findProjectById(id)
+
+    }
+
+    @Get('title/:id')
+    async getTitleById(@Param('id') id): Promise<Title> {
+
+        return this.portfolioService.findTitleById(id)
+
+    }
+        
+
     //FIND MULTIPLE
     @Get('profile')
     async getProfile(@Req() req): Promise<Profile | null>{
