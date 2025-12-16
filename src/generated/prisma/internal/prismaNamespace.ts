@@ -391,7 +391,8 @@ export const ModelName = {
   Experience: 'Experience',
   Education: 'Education',
   Title: 'Title',
-  ProjectFiles: 'ProjectFiles'
+  ProjectFiles: 'ProjectFiles',
+  Settings: 'Settings'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -407,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "profile" | "project" | "skill" | "experience" | "education" | "title" | "projectFiles"
+    modelProps: "user" | "profile" | "project" | "skill" | "experience" | "education" | "title" | "projectFiles" | "settings"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1003,6 +1004,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Settings: {
+      payload: Prisma.$SettingsPayload<ExtArgs>
+      fields: Prisma.SettingsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SettingsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SettingsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SettingsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SettingsPayload>
+        }
+        findFirst: {
+          args: Prisma.SettingsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SettingsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SettingsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SettingsPayload>
+        }
+        findMany: {
+          args: Prisma.SettingsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SettingsPayload>[]
+        }
+        create: {
+          args: Prisma.SettingsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SettingsPayload>
+        }
+        createMany: {
+          args: Prisma.SettingsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SettingsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SettingsPayload>[]
+        }
+        delete: {
+          args: Prisma.SettingsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SettingsPayload>
+        }
+        update: {
+          args: Prisma.SettingsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SettingsPayload>
+        }
+        deleteMany: {
+          args: Prisma.SettingsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SettingsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SettingsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SettingsPayload>[]
+        }
+        upsert: {
+          args: Prisma.SettingsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SettingsPayload>
+        }
+        aggregate: {
+          args: Prisma.SettingsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSettings>
+        }
+        groupBy: {
+          args: Prisma.SettingsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SettingsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SettingsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SettingsCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1155,6 +1230,18 @@ export const ProjectFilesScalarFieldEnum = {
 } as const
 
 export type ProjectFilesScalarFieldEnum = (typeof ProjectFilesScalarFieldEnum)[keyof typeof ProjectFilesScalarFieldEnum]
+
+
+export const SettingsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  maintanence_enabled: 'maintanence_enabled',
+  allow_contact: 'allow_contact',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SettingsScalarFieldEnum = (typeof SettingsScalarFieldEnum)[keyof typeof SettingsScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1352,6 +1439,7 @@ export type GlobalOmitConfig = {
   education?: Prisma.EducationOmit
   title?: Prisma.TitleOmit
   projectFiles?: Prisma.ProjectFilesOmit
+  settings?: Prisma.SettingsOmit
 }
 
 /* Types for Logging */

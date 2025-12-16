@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post, UseGuards, Req, Param, Patch, ForbiddenExc
 import { PortfolioService } from './portfolio.service';
 import { JwtAuthGuard } from 'src/middlewares/jwt-guard';
 import { CreateProfileDto } from './dto/create-profile.dto';
-import { Education, Experience, Profile, Project, ProjectFiles, Skill, Title } from 'src/generated/prisma/client';
+import { Education, Experience, Profile, Project, ProjectFiles, Settings, Skill, Title } from 'src/generated/prisma/client';
 import { CreateSkillDto } from './dto/create-skill.dto';
 import { CreateExperienceDto } from './dto/create-experience.dto';
 import { CreateEducationDto } from './dto/create-education.dto';
@@ -69,6 +69,15 @@ export class PortfolioController {
 
     }
 
+    @Get('settings')
+    async getSettings(@Req() req): Promise<Settings>{
+
+        const userId = req.user.sub
+
+        return this.portfolioService.getSettings(userId)
+
+    }
+
     @Get('projectfiles/:id')
     async getProjectFiles(@Req() req, @Param('id') projectId): Promise<ProjectFiles[]>{
 
@@ -117,6 +126,12 @@ export class PortfolioController {
     async createTitle(@Body() dto: CreateTitleDto, @Req() req) : Promise<Title>{
         const userId = req.user.sub
         return this.portfolioService.saveTitle(dto, userId)
+    }
+
+    @Post('settings')
+    async createSettings(@Body() body: any, @Req() req) : Promise<Settings>{
+        const userId = req.user.sub
+        return this.portfolioService.saveSettings(body, userId)
     }
 
     //UPDATES
@@ -203,6 +218,21 @@ export class PortfolioController {
 
         return this.portfolioService.updateTitle(id, dto);
     }
+
+    @Patch('settings/:id')
+    async updateSettings(
+        @Param('id') id: string,
+        @Body() body,
+        @Req() req
+    ): Promise<Settings> {
+        const userId = req.user.sub;
+        const settings = await this.portfolioService.findSettingsById(id);
+
+        if (settings.userId !== userId) throw new ForbiddenException('You cannot update this settings');
+
+        return this.portfolioService.updateSettings(id, body);
+    }
+
 
     //DELETIONS
     @Delete('profiles/:id')

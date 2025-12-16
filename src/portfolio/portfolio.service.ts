@@ -1,7 +1,7 @@
-import { Injectable, ForbiddenException} from '@nestjs/common';
+import { Injectable, ForbiddenException, Body} from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { CreateProfileDto } from './dto/create-profile.dto';
-import { Education, Experience, Profile, Project, ProjectFiles, Skill, Title } from 'src/generated/prisma/client';
+import { Education, Experience, Profile, Project, ProjectFiles, Settings, Skill, Title } from 'src/generated/prisma/client';
 import { CreateSkillDto } from './dto/create-skill.dto';
 import { CreateExperienceDto } from './dto/create-experience.dto';
 import { CreateEducationDto } from './dto/create-education.dto';
@@ -88,6 +88,27 @@ export class PortfolioService {
         return title
     }
 
+    async findSettingsById(id: string): Promise<Settings>{
+
+        const settings = await this.prisma.settings.findUniqueOrThrow({
+            where: {
+                id
+            }
+        })
+
+        return settings
+    }
+
+    async getSettings(userId: string): Promise<Settings>{
+
+        const settings = await this.prisma.settings.findUniqueOrThrow({
+            where: {
+                userId
+            }
+        })
+
+        return settings
+    }
     //FIND MULTIPLE
 
     async getProfile(userId): Promise<Profile | null> {
@@ -241,6 +262,18 @@ export class PortfolioService {
         
     }
 
+    async saveSettings(body: any, userId: string): Promise<Settings> {
+
+        return this.prisma.settings.create({
+            data: {
+                maintanence_enabled: body.maintanence_enabled === 'on',
+                allow_contact: body.allow_contact === 'on',
+                userId
+            }
+        })
+        
+    }
+
     //UPDATING
     async updateProfile(id: string, dto: UpdateProfileDto) {
         return this.prisma.profile.update({
@@ -286,6 +319,18 @@ export class PortfolioService {
         });
     }
     
+    async updateSettings(id: string, body: any) {
+
+        console.log(body)
+        return this.prisma.settings.update({
+            where: { id },
+            data: {
+                 maintanence_enabled: body.maintenance_enabled === 'on',
+                allow_contact: body.allow_contact === 'on',
+            } 
+        });
+    }
+    
 
     //DELETIONS
 
@@ -309,7 +354,7 @@ export class PortfolioService {
         }})
 
         if(!skill || skill.userId !== userId) {
-            throw new ForbiddenException('You cannot delete this project');
+            throw new ForbiddenException('You cannot delete this skill');
         }
 
         return this.prisma.skill.delete({where: {id}})
@@ -322,7 +367,7 @@ export class PortfolioService {
         }})
 
         if(!experience || experience.userId !== userId) {
-            throw new ForbiddenException('You cannot delete this project');
+            throw new ForbiddenException('You cannot delete this experience');
         }
 
         return this.prisma.experience.delete({where: {id}})
@@ -335,7 +380,7 @@ export class PortfolioService {
         }})
 
         if(!education || education.userId !== userId) {
-            throw new ForbiddenException('You cannot delete this project');
+            throw new ForbiddenException('You cannot delete this education');
         }
 
         return this.prisma.education.delete({where: {id}})
@@ -361,7 +406,7 @@ export class PortfolioService {
         }})
 
         if(!title || title.userId !== userId) {
-            throw new ForbiddenException('You cannot delete this project');
+            throw new ForbiddenException('You cannot delete this title');
         }
 
         return this.prisma.title.delete({where: {id}})

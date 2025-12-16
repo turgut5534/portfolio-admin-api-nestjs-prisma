@@ -20,6 +20,7 @@ async getInfo(domain: string) {
       experiences: true,
       projects: true,
       titles: true,
+      settings: true
     },
   });
 }

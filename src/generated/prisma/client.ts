@@ -77,3 +77,8 @@ export type Title = Prisma.TitleModel
  * 
  */
 export type ProjectFiles = Prisma.ProjectFilesModel
+/**
+ * Model Settings
+ * 
+ */
+export type Settings = Prisma.SettingsModel

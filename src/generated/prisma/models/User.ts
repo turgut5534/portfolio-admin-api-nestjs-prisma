@@ -199,6 +199,7 @@ export type UserWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
+  settings?: Prisma.XOR<Prisma.SettingsNullableScalarRelationFilter, Prisma.SettingsWhereInput> | null
   experiences?: Prisma.ExperienceListRelationFilter
   educations?: Prisma.EducationListRelationFilter
   projects?: Prisma.ProjectListRelationFilter
@@ -215,6 +216,7 @@ export type UserOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
+  settings?: Prisma.SettingsOrderByWithRelationInput
   experiences?: Prisma.ExperienceOrderByRelationAggregateInput
   educations?: Prisma.EducationOrderByRelationAggregateInput
   projects?: Prisma.ProjectOrderByRelationAggregateInput
@@ -234,6 +236,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
+  settings?: Prisma.XOR<Prisma.SettingsNullableScalarRelationFilter, Prisma.SettingsWhereInput> | null
   experiences?: Prisma.ExperienceListRelationFilter
   educations?: Prisma.EducationListRelationFilter
   projects?: Prisma.ProjectListRelationFilter
@@ -276,6 +279,7 @@ export type UserCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
@@ -292,6 +296,7 @@ export type UserUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsUncheckedCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceUncheckedCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
@@ -308,6 +313,7 @@ export type UserUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
@@ -324,6 +330,7 @@ export type UserUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUncheckedUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUncheckedUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
@@ -496,6 +503,20 @@ export type UserUpdateOneRequiredWithoutTitlesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTitlesInput, Prisma.UserUpdateWithoutTitlesInput>, Prisma.UserUncheckedUpdateWithoutTitlesInput>
 }
 
+export type UserCreateNestedOneWithoutSettingsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSettingsInput, Prisma.UserUncheckedCreateWithoutSettingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSettingsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSettingsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSettingsInput, Prisma.UserUncheckedCreateWithoutSettingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSettingsInput
+  upsert?: Prisma.UserUpsertWithoutSettingsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSettingsInput, Prisma.UserUpdateWithoutSettingsInput>, Prisma.UserUncheckedUpdateWithoutSettingsInput>
+}
+
 export type UserCreateWithoutProfileInput = {
   id?: string
   email: string
@@ -504,6 +525,7 @@ export type UserCreateWithoutProfileInput = {
   domain?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  settings?: Prisma.SettingsCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
@@ -519,6 +541,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   domain?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  settings?: Prisma.SettingsUncheckedCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceUncheckedCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
@@ -550,6 +573,7 @@ export type UserUpdateWithoutProfileInput = {
   domain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  settings?: Prisma.SettingsUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
@@ -565,6 +589,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   domain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  settings?: Prisma.SettingsUncheckedUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUncheckedUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
@@ -581,6 +606,7 @@ export type UserCreateWithoutProjectsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillCreateNestedManyWithoutUserInput
@@ -596,6 +622,7 @@ export type UserUncheckedCreateWithoutProjectsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsUncheckedCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceUncheckedCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput
@@ -627,6 +654,7 @@ export type UserUpdateWithoutProjectsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUpdateManyWithoutUserNestedInput
@@ -642,6 +670,7 @@ export type UserUncheckedUpdateWithoutProjectsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUncheckedUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUncheckedUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput
@@ -657,6 +686,7 @@ export type UserCreateWithoutSkillsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
@@ -672,6 +702,7 @@ export type UserUncheckedCreateWithoutSkillsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsUncheckedCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceUncheckedCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
@@ -703,6 +734,7 @@ export type UserUpdateWithoutSkillsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
@@ -718,6 +750,7 @@ export type UserUncheckedUpdateWithoutSkillsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUncheckedUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUncheckedUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
@@ -733,6 +766,7 @@ export type UserCreateWithoutExperiencesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsCreateNestedOneWithoutUserInput
   educations?: Prisma.EducationCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillCreateNestedManyWithoutUserInput
@@ -748,6 +782,7 @@ export type UserUncheckedCreateWithoutExperiencesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsUncheckedCreateNestedOneWithoutUserInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput
@@ -779,6 +814,7 @@ export type UserUpdateWithoutExperiencesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUpdateOneWithoutUserNestedInput
   educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUpdateManyWithoutUserNestedInput
@@ -794,6 +830,7 @@ export type UserUncheckedUpdateWithoutExperiencesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUncheckedUpdateOneWithoutUserNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput
@@ -809,6 +846,7 @@ export type UserCreateWithoutEducationsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillCreateNestedManyWithoutUserInput
@@ -824,6 +862,7 @@ export type UserUncheckedCreateWithoutEducationsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsUncheckedCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceUncheckedCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput
@@ -855,6 +894,7 @@ export type UserUpdateWithoutEducationsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUpdateManyWithoutUserNestedInput
@@ -870,6 +910,7 @@ export type UserUncheckedUpdateWithoutEducationsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUncheckedUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUncheckedUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput
@@ -885,6 +926,7 @@ export type UserCreateWithoutTitlesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
@@ -900,6 +942,7 @@ export type UserUncheckedCreateWithoutTitlesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  settings?: Prisma.SettingsUncheckedCreateNestedOneWithoutUserInput
   experiences?: Prisma.ExperienceUncheckedCreateNestedManyWithoutUserInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
@@ -931,6 +974,7 @@ export type UserUpdateWithoutTitlesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
@@ -946,10 +990,91 @@ export type UserUncheckedUpdateWithoutTitlesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  settings?: Prisma.SettingsUncheckedUpdateOneWithoutUserNestedInput
   experiences?: Prisma.ExperienceUncheckedUpdateManyWithoutUserNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSettingsInput = {
+  id?: string
+  email: string
+  password: string
+  role?: $Enums.Role
+  domain?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  experiences?: Prisma.ExperienceCreateNestedManyWithoutUserInput
+  educations?: Prisma.EducationCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  skills?: Prisma.SkillCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSettingsInput = {
+  id?: string
+  email: string
+  password: string
+  role?: $Enums.Role
+  domain?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  experiences?: Prisma.ExperienceUncheckedCreateNestedManyWithoutUserInput
+  educations?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  skills?: Prisma.SkillUncheckedCreateNestedManyWithoutUserInput
+  titles?: Prisma.TitleUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSettingsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSettingsInput, Prisma.UserUncheckedCreateWithoutSettingsInput>
+}
+
+export type UserUpsertWithoutSettingsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSettingsInput, Prisma.UserUncheckedUpdateWithoutSettingsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSettingsInput, Prisma.UserUncheckedCreateWithoutSettingsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSettingsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSettingsInput, Prisma.UserUncheckedUpdateWithoutSettingsInput>
+}
+
+export type UserUpdateWithoutSettingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  domain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  experiences?: Prisma.ExperienceUpdateManyWithoutUserNestedInput
+  educations?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  skills?: Prisma.SkillUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSettingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  domain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  experiences?: Prisma.ExperienceUncheckedUpdateManyWithoutUserNestedInput
+  educations?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  skills?: Prisma.SkillUncheckedUpdateManyWithoutUserNestedInput
+  titles?: Prisma.TitleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -1028,6 +1153,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
+  settings?: boolean | Prisma.User$settingsArgs<ExtArgs>
   experiences?: boolean | Prisma.User$experiencesArgs<ExtArgs>
   educations?: boolean | Prisma.User$educationsArgs<ExtArgs>
   projects?: boolean | Prisma.User$projectsArgs<ExtArgs>
@@ -1069,6 +1195,7 @@ export type UserSelectScalar = {
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "role" | "domain" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
+  settings?: boolean | Prisma.User$settingsArgs<ExtArgs>
   experiences?: boolean | Prisma.User$experiencesArgs<ExtArgs>
   educations?: boolean | Prisma.User$educationsArgs<ExtArgs>
   projects?: boolean | Prisma.User$projectsArgs<ExtArgs>
@@ -1083,6 +1210,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     profile: Prisma.$ProfilePayload<ExtArgs> | null
+    settings: Prisma.$SettingsPayload<ExtArgs> | null
     experiences: Prisma.$ExperiencePayload<ExtArgs>[]
     educations: Prisma.$EducationPayload<ExtArgs>[]
     projects: Prisma.$ProjectPayload<ExtArgs>[]
@@ -1492,6 +1620,7 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   profile<T extends Prisma.User$profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$profileArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  settings<T extends Prisma.User$settingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$settingsArgs<ExtArgs>>): Prisma.Prisma__SettingsClient<runtime.Types.Result.GetResult<Prisma.$SettingsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   experiences<T extends Prisma.User$experiencesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$experiencesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExperiencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   educations<T extends Prisma.User$educationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$educationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EducationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   projects<T extends Prisma.User$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -1937,6 +2066,25 @@ export type User$profileArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    */
   include?: Prisma.ProfileInclude<ExtArgs> | null
   where?: Prisma.ProfileWhereInput
+}
+
+/**
+ * User.settings
+ */
+export type User$settingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Settings
+   */
+  select?: Prisma.SettingsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Settings
+   */
+  omit?: Prisma.SettingsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SettingsInclude<ExtArgs> | null
+  where?: Prisma.SettingsWhereInput
 }
 
 /**
