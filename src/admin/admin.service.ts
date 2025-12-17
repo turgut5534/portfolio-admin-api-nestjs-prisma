@@ -11,14 +11,7 @@ export class AdminService {
 
 
     async getAllAdmins(): Promise<User[]> {
-      return this.prisma.user.findMany({
-        where: {
-          role: Role.ADMIN
-        },
-        include: {
-          profile: true
-        }
-      });
+      return this.prisma.user.findMany();
     }
 
     async saveAdmin(data: CreateAdminDto): Promise<User> {
