@@ -134,6 +134,19 @@ export class PortfolioService {
 
     }
 
+    async getExperiences(userId): Promise<Experience[]> {
+
+        return this.prisma.experience.findMany({
+            where: {
+                userId
+            },
+            orderBy: {
+                createdAt: 'asc'
+            }
+        })
+
+    }
+
     async getEducations(userId): Promise<Education[]> {
 
         return this.prisma.education.findMany({

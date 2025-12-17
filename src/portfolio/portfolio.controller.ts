@@ -80,6 +80,15 @@ export class PortfolioController {
 
     }
 
+    @Get('experiences')
+    async getExperiences(@Req() req): Promise<Experience[]>{
+
+        const userId = req.user.sub
+
+        return this.portfolioService.getExperiences(userId)
+
+    }
+
     @Get('educations')
     async getEducations(@Req() req): Promise<Education[]>{
 

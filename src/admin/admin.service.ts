@@ -40,23 +40,23 @@ export class AdminService {
         }
       }
 
-      async findById(userId: string) {
-        return this.prisma.user.findUnique({
-          where: { id: userId },
-          include: {
-            profile: true,
-            skills: true,
-            educations: true,
-            experiences: true,
-            projects: {
-              include: {
-                files: true
-              }
-            },
-            titles: true
+    async findById(userId: string) {
+      return this.prisma.user.findUnique({
+        where: { id: userId },
+        include: {
+          profile: true,
+          skills: true,
+          educations: true,
+          experiences: true,
+          projects: {
+            include: {
+              files: true
+            }
           },
-        });
-      }
+          titles: true
+        },
+      });
+    }
 
       async deleteAdmin(id: string) {
 
@@ -97,6 +97,34 @@ export class AdminService {
             password: hashedPassword
           }
         })
+
+      }
+
+      async updateUser(id: string, body: Partial<User> & { password?: string}): Promise<User> {
+
+          const user = await this.prisma.user.findFirst({where: {id}})
+
+          if (!user) {
+            throw new NotFoundException('User not found');
+          }
+
+          const updateData: any = { ...body };
+
+          if(body.password) {
+            const hashedPassword = await bcrypt.hash(body.password, 12)
+            updateData.password = hashedPassword
+          }
+
+          Object.keys(updateData).forEach(
+            key => updateData[key] === undefined && delete updateData[key],
+          );
+          
+          const updatedUser = await this.prisma.user.update({
+            where: { id },
+            data: updateData,
+          });
+
+          return updatedUser
 
       }
 
