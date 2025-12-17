@@ -1,6 +1,6 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { Injectable, BadRequestException, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
-import { Prisma, User } from '../generated/prisma/client'
+import { Prisma, Role, User } from '../generated/prisma/client'
 import * as bcrypt from 'bcrypt'
 import { CreateAdminDto } from './dto/admin.dto';
 
@@ -9,14 +9,16 @@ export class AdminService {
 
     constructor(private readonly prisma: PrismaService) {}
 
-    async getAllAdmins(): Promise<User []> {
-      
-      return this.prisma.user.findMany({
-        include: {
-          profile:true
-        }
-      })
 
+    async getAllAdmins(): Promise<User[]> {
+      return this.prisma.user.findMany({
+        where: {
+          role: Role.ADMIN
+        },
+        include: {
+          profile: true
+        }
+      });
     }
 
     async saveAdmin(data: CreateAdminDto): Promise<User> {

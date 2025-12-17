@@ -15,14 +15,41 @@ async getInfo(domain: string) {
     where: { domain },
     select: {
       profile: true,
-      skills: true,
-      educations: true,
-      experiences: true,
-      projects: true,
-      titles: true,
-      settings: true
+
+      skills: {
+        orderBy: {
+          createdAt: 'asc',
+        },
+      },
+
+      educations: {
+        orderBy: {
+          startDate: 'desc',
+        },
+      },
+
+      experiences: {
+        orderBy: {
+          startDate: 'desc',
+        },
+      },
+
+      projects: {
+        orderBy: {
+          updatedAt: 'asc',
+        },
+      },
+
+      titles: {
+        orderBy: {
+          createdAt: 'asc',
+        },
+      },
+
+      settings: true,
     },
   });
 }
+
 
 }

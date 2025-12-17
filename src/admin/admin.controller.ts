@@ -4,6 +4,9 @@ import { User } from 'src/generated/prisma/client';
 import { ApiKeyGuard } from 'src/middlewares/api-key.guard';
 import { CreateAdminDto } from './dto/admin.dto';
 import { JwtAuthGuard } from 'src/middlewares/jwt-guard';
+import { RolesGuard } from './helpers/roles.guard';
+import { Role } from 'src/generated/prisma/client';
+import { Roles } from './helpers/roles.decorator';
 
 @Controller('admin')
 export class AdminController {
@@ -14,7 +17,8 @@ export class AdminController {
 
 
     @Get('all')
-    @UseGuards(ApiKeyGuard)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(Role.ADMIN)
     async getAllAdmins(): Promise<User[]> {
 
         return this.adminService.getAllAdmins()
