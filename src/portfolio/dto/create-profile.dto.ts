@@ -43,6 +43,5 @@ export class CreateProfileDto {
   websiteUrl?: string;
 
   @IsOptional()
-  @IsUrl()
   cvUrl?: string;
 }
