@@ -8,11 +8,9 @@ export class CreateProjectDto {
   shortDescription: string;
 
   @IsOptional()
-  @IsString()
   longDescription?: string;
 
   @IsOptional()
-  @IsUrl()
   coverImageUrl?: string;
 
   @IsOptional()
