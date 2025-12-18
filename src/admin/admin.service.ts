@@ -24,13 +24,23 @@ export class AdminService {
 
         try {
 
-          return await this.prisma.user.create({
+          const user = await this.prisma.user.create({
             data: {
               email: data.email,
               password: hashedPassword,
               domain: data.domain
             },
           });
+
+          await this.prisma.settings.create({
+            data: {
+              maintanence_enabled: false,
+              allow_contact: false,
+              userId: user.id
+            }
+          })
+
+          return user
         } catch (error) {
 
           if (error.code === 'P2002') {
@@ -110,8 +120,6 @@ export class AdminService {
 
           const updateData: any = { ...body };
 
-          console.log(updateData)
-
           if(body.password) {
             const hashedPassword = await bcrypt.hash(body.password, 12)
             updateData.password = hashedPassword
@@ -125,6 +133,8 @@ export class AdminService {
             where: { id },
             data: updateData,
           });
+
+          console.log(updatedUser)
 
           return updatedUser
 
