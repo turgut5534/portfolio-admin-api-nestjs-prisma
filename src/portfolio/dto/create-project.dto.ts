@@ -16,11 +16,9 @@ export class CreateProjectDto {
   coverImageUrl?: string;
 
   @IsOptional()
-  @IsUrl()
   githubUrl?: string;
 
   @IsOptional()
-  @IsUrl()
   liveUrl?: string;
 
   @IsOptional()
