@@ -52,4 +52,22 @@ async getInfo(domain: string) {
 }
 
 
+async getProjectById(id: string) {
+  return this.prisma.project.findUnique({
+    where: { id },
+    include: {
+      user: {
+        include: {
+          profile: {
+            select: {
+              fullName: true
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+
 }

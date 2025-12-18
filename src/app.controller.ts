@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Req } from '@nestjs/common';
 import { AppService } from './app.service';
 import type { Request } from 'express';
 
@@ -10,5 +10,11 @@ export class AppController {
   async getInfo(@Body() body) {
 
     return this.appService.getInfo(body.domain);
+  }
+
+  @Get('project/:id')
+  async getProject(@Param('id') id) {
+
+    return this.appService.getProjectById(id);
   }
 }
