@@ -62,7 +62,8 @@ async getProjectById(id: string) {
             select: {
               fullName: true
             }
-          }
+          },
+          settings:true
         }
       }
     }
