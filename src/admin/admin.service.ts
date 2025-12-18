@@ -110,6 +110,8 @@ export class AdminService {
 
           const updateData: any = { ...body };
 
+          console.log(updateData)
+
           if(body.password) {
             const hashedPassword = await bcrypt.hash(body.password, 12)
             updateData.password = hashedPassword
