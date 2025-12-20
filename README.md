@@ -1,98 +1,161 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🛠 Admin Management API (NestJS)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+![NestJS](https://img.shields.io/badge/NestJS-Backend-E0234E?logo=nestjs&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-18+-green?logo=node.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue?logo=typescript)
+![License](https://img.shields.io/badge/license-MIT-success)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+> A **NestJS backend API** responsible for handling **admin operations**, **CRUD management**, **role-based access**, and **file uploads** for my portfolio ecosystem.
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 📌 Overview
 
-## Project setup
+This project is a **RESTful API built with NestJS** that provides administrative capabilities for managing portfolio-related data.
 
-```bash
-$ npm install
+It is primarily consumed by:
+- An **Express.js SSR application** (portfolio website & admin panel)
+- Other frontend or service consumers (if needed)
+
+This API handles:
+- Authentication & authorization
+- Admin-only CRUD operations
+- File uploads and asset management
+
+---
+
+## ✨ Features
+
+- 🔐 Admin authentication & authorization
+- 🧑‍💼 Admin & role management
+- 📄 Full CRUD operations
+- 📂 File upload support
+- 🧩 Modular NestJS architecture
+- 📘 Swagger API documentation
+
+---
+
+## 📦 Managed Resources
+
+This API provides CRUD operations for:
+
+- Experiences
+- Skills
+- Titles
+- Educations
+- Projects
+- Admins
+- Roles
+- Uploaded files (images, documents, etc.)
+
+---
+
+## 🧠 Architecture
+
+```
+Client (Admin Panel / SSR App)
+        │
+        ▼
+Admin Management API (NestJS)
+        │
+        ▼
+Database & File Storage
 ```
 
-## Compile and run the project
+## 🧩 Tech Stack
 
-```bash
-# development
-$ npm run start
+| Layer | Technology   |
+| ----- | ----------   |
+| Backend | NestJs     |
+| Language| TypeScript |
+| Database| PostgreSQL |
+| ORM     | Prisma     |
+| Auth    | JWT        |
+| File Uploads | Multer|
 
-# watch mode
-$ npm run start:dev
+## 📁 Project Structure
 
-# production mode
-$ npm run start:prod
+```
+src/
+├── admin/            # Admin module (CRUD operations for admins and roles)
+├── auth/             # Authentication and authorization logic
+├── generated/        # Automatically generated files (e.g., Prisma client)
+├── middlewares/      # Express or NestJS middlewares
+├── portfolio/        # Modules for portfolio-related entities (experiences, skills, projects, educations, titles)
+├── upload/           # File upload handling (images, documents, etc.)
+├── app.controller.spec.ts   # Unit tests for main app controller
+├── app.controller.ts        # Main app controller
+├── app.module.ts            # Root module, imports all other modules
+├── app.service.ts           # Main application service
+├── main.ts                  # Entry point for the application
+├── prisma.service.ts        # Prisma service for database access
 ```
 
-## Run tests
+## 🔐 Authentication & Authorization
 
-```bash
-# unit tests
-$ npm run test
+* JWT-based authentication
 
-# e2e tests
-$ npm run test:e2e
+* Role-based access control (RBAC)
 
-# test coverage
-$ npm run test:cov
+* Protected admin-only routes
+
+
+## 📂 File Uploads
+
+* Supports uploading images and files
+
+*Used for:
+
+*Profile images
+
+* Project images
+
+* Other portfolio assets
+
+* Powered by Multer
+
+Uploaded files can be stored:
+
+* Locally
+
+* Or via cloud storage (if configured)
+
+## ⚙️ Environment Variables
+
+Create a .env file in the project root:
+
+```
+DATABASE_URL=your_postgres_database_url
+JWT_SECRET=your_jwt_secret
 ```
 
-## Deployment
+## ▶️ Installation & Running
+Development
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+```
+npm install
+npm run start:dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Production 
+``
+npm run build
+npm run start:prod
+``
 
-## Resources
+## 📖 API Documentation
 
-Check out a few resources that may come in handy when working with NestJS:
+Swagger UI is available at:
+```
+http://localhost:3010/api
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## 👤 Author
 
-## Support
+Turgut Salgın
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+* 🐙 GitHub: https://github.com/turgut5534
 
-## Stay in touch
+* 🌐 Portfolio: https://turgutsalgin.com
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
